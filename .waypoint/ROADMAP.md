@@ -178,5 +178,5 @@ Localization in a single HTML file is achievable without an API. The standard ap
 ---
 
 <img align="left" src="branding/banners/waypoint_banner_lightbg.png" height="64" alt="Waypoint">
-<div align="right">v1.0</div>
+<div align="right">v1.0.0</div>
 <br clear="both">
