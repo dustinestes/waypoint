@@ -1,39 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 120" width="640" height="120" role="img" aria-label="Waypoint — your learning, mapped">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 120" width="640" height="190" aria-label="Waypoint — your learning, mapped">
   <title>Waypoint — your learning, mapped</title>
-
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&amp;display=swap');
-      .wp-way   { font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif; font-weight: 500; font-size: 36px; fill: #9FE1CB; }
-      .wp-point { font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif; font-weight: 300; font-size: 36px; fill: #5DCAA5; }
-      .wp-tag   { font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif; font-weight: 300; font-size: 18px; fill: #5DCAA5; }
+      @import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&amp;display=swap);
     </style>
   </defs>
-
-  <!-- Background -->
-  <!-- <rect width="640" height="120" fill="#0c2e27" rx="12"/> -->
-
-  <!-- ── Mark ── -->
-  <!-- Outer diamond -->
-  <polygon points="52,14 84,46 52,78 20,46" fill="#5DCAA5"/>
-  <!-- Inner diamond -->
-  <polygon points="52,21 76,45 52,69 28,45" fill="#1D9E75"/>
-  <!-- Centre ring -->
-  <circle cx="52" cy="46" r="9.5" fill="#0c2e27"/>
-  <circle cx="52" cy="46" r="4.5" fill="#5DCAA5"/>
-  <!-- Pin tail -->
-  <rect x="47" y="77" width="10" height="13" rx="1.5" fill="#5DCAA5"/>
-  <polygon points="43,88 61,88 52,100" fill="#5DCAA5"/>
-
-  <!-- ── Wordmark ── -->
-  <text y="57" font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif" font-size="36">
-    <tspan x="100" font-weight="500" fill="#9FE1CB">way</tspan><tspan font-weight="300" fill="#5DCAA5">point</tspan>
+  <path fill="#5DCAA5" d="m112 23 32 32-32 32-32-32z"/>
+  <path fill="#1D9E75" d="m112 31 24 24-24 24-24-24z"/>
+  <circle cx="112" cy="56" r="9.5" fill="#0c2e27"/>
+  <circle cx="112" cy="56" r="4.5" fill="#5DCAA5"/>
+  <rect x="107" y="87" width="10" height="13" rx="1.5" fill="#5DCAA5"/>
+  <path fill="#5DCAA5" d="M103 98h18l-9 12z"/>
+  <text y="67" font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif" font-size="36">
+    <tspan x="155" font-weight="500" fill="#9FE1CB">way</tspan><tspan font-weight="300" fill="#5DCAA5">point</tspan>
   </text>
-
-  <!-- ── Divider ── -->
-  <line x1="330" y1="30" x2="330" y2="70" stroke="#1D9E75" stroke-width="1"/>
-
-  <!-- ── Tagline ── -->
-  <text x="348" y="53" class="wp-tag">your learning, mapped</text>
-
+  <path stroke="#888780" d="M330 35v40"/>
+  <text x="348" y="60" style="font-family:&quot;Ubuntu&quot;,&quot;Segoe UI&quot;,system-ui,sans-serif;font-weight:300;font-size:18px;fill:#d3d1c7">your learning, mapped</text>
 </svg>
