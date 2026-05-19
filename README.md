@@ -1,12 +1,35 @@
-# waypoint
+<br/><br/>
 
-> **Your learning, mapped.**
+<div align="center">
+
+<br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".waypoint/branding/banners/waypoint_banner_darkbg.png">
+  <img alt="Waypoint" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="130">
+</picture>
+
+
+<br/><br/>
+
+![License](https://img.shields.io/badge/license-MIT%20%2B%20Attribution-1D9E75?style=flat-square&labelColor=085041)
+![Version](https://img.shields.io/badge/version-v1.0.0-1D9E75?style=flat-square&labelColor=085041)
+![Build Step](https://img.shields.io/badge/build%20step-none-1D9E75?style=flat-square&labelColor=085041)
+![Works Offline](https://img.shields.io/badge/works-offline-1D9E75?style=flat-square&labelColor=085041)
+
+<br/>
+
+</div>
+
+<br/><br/>
+
+---
 
 Waypoint is a lightweight, file-based framework for structuring and tracking self-directed learning — across any subject, platform, or learning path. Whether you're grinding through a certification, exploring a new technology, or building knowledge across multiple unrelated topics at once, Waypoint gives you a single place to define what you're learning, track where you are, and navigate what's next.
 
-No SaaS accounts. No vendor lock-in. Just a repo, a YAML file, and a dashboard.
-
 ---
+
+<br/>
 
 ## What It Does
 
@@ -17,6 +40,8 @@ No SaaS accounts. No vendor lock-in. Just a repo, a YAML file, and a dashboard.
 - *(Planned)* **Generate** learning plans via AI — share your repo as context and let an agent scaffold a full roadmap for any subject or certification
 
 ---
+
+<br/>
 
 ## Who It's For
 
@@ -30,6 +55,8 @@ That includes:
 If your learning doesn't fit neatly into one platform's progress bar, Waypoint is for you.
 
 ---
+
+<br/>
 
 ## Project Structure
 
@@ -45,6 +72,8 @@ waypoint/
 ```
 
 ---
+
+<br/>
 
 ## The YAML Roadmap
 
@@ -101,11 +130,15 @@ subjects:
 
 ---
 
+<br/>
+
 ## Dashboard
 
 Open `dashboard.html` in your browser to see a visual summary of your roadmap — progress by milestone, module status at a glance, and direct links to your notes and materials. No build step, no server required.
 
 ---
+
+<br/>
 
 ## Getting Started
 
@@ -125,6 +158,8 @@ Open `dashboard.html` in your browser to see a visual summary of your roadmap �
 
 ---
 
+<br/>
+
 ## Roadmap
 
 - [x] Folder scaffold and YAML schema
@@ -136,11 +171,15 @@ Open `dashboard.html` in your browser to see a visual summary of your roadmap �
 
 ---
 
+<br/>
+
 ## Contributing
 
 Contributions, ideas, and feedback are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 
 ---
+
+<br/>
 
 ## License
 
@@ -148,11 +187,17 @@ This project is licensed under the MIT License with an Attribution Condition. Yo
 
 ---
 
+<br/>
+
 ## Contributors
 
 - **Dustin Estes** — creator, product design, and development
 - **[Claude](https://claude.ai) (Anthropic)** — AI development assistant
 
+<br>
+
 ---
 
-<sub>Powered by Waypoint — github.com/dustinestes/waypoint</sub>
+<img align="left" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="Waypoint">
+<div align="right">v1.0.0</div>
+<br clear="both">

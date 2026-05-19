@@ -1,4 +1,4 @@
-<svg width="280" viewBox="0 0 205 72">
+<svg width="280" viewBox="0 0 420 72">
   <defs>
     <style>
       @import url(https://googleapis.com);.logo-text{font-family:&quot;Ubuntu&quot;,sans-serif}
@@ -13,4 +13,6 @@
   <path fill="#5DCAA5" d="M22 56h16l-8 8z"/>
   <text x="70" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="500" fill="#9FE1CB">way</text>
   <text x="125" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="300" fill="#5DCAA5">point</text>
+  <path stroke="#888780" d="M210 09v40"/>
+  <text x="225" y="33" style="font-family:&quot;Ubuntu&quot;,&quot;Segoe UI&quot;,system-ui,sans-serif;font-weight:300;font-size:18px;fill:#d3d1c7">your learning, mapped</text>
 </svg>

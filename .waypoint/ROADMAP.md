@@ -1,9 +1,11 @@
-# Waypoint — Product Roadmap
+<br><br>
+<img align="right" src="branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="Waypoint">
+<h1>Product Roadmap</h1>
+<br clear="both">
 
-A living document tracking planned features, improvements, and ideas across versions.
-Items marked ✓ are shipped. Items without a mark are planned or in consideration.
+A living document tracking planned features, improvements, and ideas across versions. Items marked ✓ are shipped. Items without a mark are planned or in consideration.
 
----
+<br>
 
 ## v1 — Minimal viable product
 
@@ -12,44 +14,44 @@ progress, and update module statuses — all from a single HTML file with no dep
 beyond a browser.
 
 ### Dashboard
-- ✓ Auto-load `waypoint.yaml` from same directory (GitHub Pages / local server)
-- ✓ File picker + drag-and-drop fallback for local use
-- ✓ Summary bar — total, complete, in progress, not started, skipped counts
-- ✓ Overall progress bar
-- ✓ In progress strip — active modules surfaced at the top
-- ✓ Subject cards — collapsible, with progress bar, milestone count, estimated time
-- ✓ Milestone rows — collapsible, with progress bar and estimated time
-- ✓ Module rows — status badge, type, difficulty, estimated time, resource links
-- ✓ started_date and completed_date displayed per module
+- [X] Auto-load `waypoint.yaml` from same directory (GitHub Pages / local server)
+- [X] File picker + drag-and-drop fallback for local use
+- [X] Summary bar — total, complete, in progress, not started, skipped counts
+- [X] Overall progress bar
+- [X] In progress strip — active modules surfaced at the top
+- [X] Subject cards — collapsible, with progress bar, milestone count, estimated time
+- [X] Milestone rows — collapsible, with progress bar and estimated time
+- [X] Module rows — status badge, type, difficulty, estimated time, resource links
+- [X] started_date and completed_date displayed per module
 
 ### Editing
-- ✓ Click badge to open status dropdown (not_started / in_progress / complete / skipped)
-- ✓ Auto-fill `started_date` when status set to in_progress
-- ✓ Auto-fill `completed_date` when status set to complete
-- ✓ Clear dates when status reset to not_started
-- ✓ Undo toast — 5 second window to revert a status change
-- ✓ Unsaved changes indicator — amber pill in navbar
-- ✓ Download button state — gray when clean, teal when unsaved changes exist
-- ✓ Download updated YAML — serializes in-memory state back to valid YAML
-- ✓ localStorage cache — auto-saves state on every change
-- ✓ Restore session banner — offered on next load if unsaved cache exists
-- ✓ Cache cleared automatically after successful download
+- [X] Click badge to open status dropdown (not_started / in_progress / complete / skipped)
+- [X] Auto-fill `started_date` when status set to in_progress
+- [X] Auto-fill `completed_date` when status set to complete
+- [X] Clear dates when status reset to not_started
+- [X] Undo toast — 5 second window to revert a status change
+- [X] Unsaved changes indicator — amber pill in navbar
+- [X] Download button state — gray when clean, teal when unsaved changes exist
+- [X] Download updated YAML — serializes in-memory state back to valid YAML
+- [X] localStorage cache — auto-saves state on every change
+- [X] Restore session banner — offered on next load if unsaved cache exists
+- [X] Cache cleared automatically after successful download
 
 ### Theming and branding
-- ✓ Three built-in themes — Default (dark header), Minimal (left border depth), Warm (teal header)
-- ✓ Theme picker — palette icon in navbar, popover with named swatches
-- ✓ Theme persisted in localStorage across reloads
-- ✓ Subject / milestone / module hierarchy visually distinguished per theme
-- ✓ Footer — Waypoint logo, tagline, version number, GitHub link
-- ✓ Footer attribution preserved as open source requirement (MIT)
+- [X] Three built-in themes — Default (dark header), Minimal (left border depth), Warm (teal header)
+- [X] Theme picker — palette icon in navbar, popover with named swatches
+- [X] Theme persisted in localStorage across reloads
+- [X] Subject / milestone / module hierarchy visually distinguished per theme
+- [X] Footer — Waypoint logo, tagline, version number, GitHub link
+- [X] Footer attribution preserved as open source requirement (MIT)
 
 ### YAML schema
-- ✓ Hierarchy: subject → milestone → module
-- ✓ Statuses: not_started | in_progress | complete | skipped
-- ✓ Module metadata: difficulty, type, estimated_time, started_date, completed_date
-- ✓ Resources: internal (notes, lab, script) and external (url) per module
-- ✓ Estimated time optional at subject, milestone, and module level
-- ✓ All optional fields present as blank keys for easy authoring
+- [X] Hierarchy: subject → milestone → module
+- [X] Statuses: not_started | in_progress | complete | skipped
+- [X] Module metadata: difficulty, type, estimated_time, started_date, completed_date
+- [X] Resources: internal (notes, lab, script) and external (url) per module
+- [X] Estimated time optional at subject, milestone, and module level
+- [X] All optional fields present as blank keys for easy authoring
 
 ---
 
@@ -171,6 +173,10 @@ Starting at (1) with a path to (2) is the pragmatic v3 approach.
 ### Localization
 Localization in a single HTML file is achievable without an API. The standard approach is a JS object acting as a string lookup table — one object per locale, keys are string identifiers, values are translated strings. On load, detect `navigator.language`, pick the matching locale object, and replace all UI strings via the lookup. Date formatting is handled by the built-in `Intl.DateTimeFormat` API (already in all modern browsers, no library needed). The main effort is authoring the translation files — the community can contribute locale files as separate JS imports, which fits the open source model well. No external API required.
 
+<br>
+
 ---
 
-*Last updated: see git log*
+<img align="left" src="branding/banners/waypoint_banner_lightbg.png" height="64" alt="Waypoint">
+<div align="right">v1.0.0</div>
+<br clear="both">
