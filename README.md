@@ -162,12 +162,8 @@ Open `dashboard.html` in your browser to see a visual summary of your roadmap �
 
 ## Roadmap
 
-- [x] Folder scaffold and YAML schema
-- [x] Local progress dashboard
-- [ ] Multi-subject support (multiple YAML files)
-- [ ] AI skill / agent instructions for automated roadmap generation
-- [ ] CLI helper for status updates
-- [ ] Dashboard themes
+- **Planned and in-progress** → [GitHub Issues](https://github.com/dustinestes/waypoint/issues)
+- **Shipped by version** → [GitHub Releases](https://github.com/dustinestes/waypoint/releases)
 
 ---
 
