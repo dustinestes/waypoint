@@ -1,0 +1,16 @@
+<svg width="280" viewBox="0 0 280 72">
+  <defs>
+    <style>
+      @import url(https://googleapis.com);.logo-text{font-family:&quot;Ubuntu&quot;,sans-serif}
+    </style>
+  </defs>
+  <title>Waypoint Logo - Primary - Light Background</title>
+  <path fill="#1d9e75" d="m30 4 24 24-24 24L6 28z"/>
+  <path fill="#0f6e56" d="m30 10 18 18-18 18-18-18z"/>
+  <circle cx="30" cy="28" r="7" fill="#fff"/>
+  <circle cx="30" cy="28" r="3.5" fill="#1d9e75"/>
+  <rect x="26" y="48" width="8" height="10" rx="1" fill="#1d9e75"/>
+  <path fill="#1d9e75" d="M22 56h16l-8 8z"/>
+  <text x="70" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="500" fill="#085041">way</text>
+  <text x="128" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="300" fill="#1d9e75">point</text>
+</svg>

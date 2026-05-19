@@ -1,0 +1,279 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.42.0/dist/tabler-icons.min.css" media="all" onload="this.media='all'">
+
+<style>
+  * { box-sizing: border-box; font-family: 'Ubuntu', system-ui, sans-serif; }
+  .section { margin-bottom: 2.5rem; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: #04342C; margin: 0 0 1rem; }
+  .card { border-radius: 8px; padding: 1.5rem; }
+  .card-dark { background: #0c2e27; border: 0.5px solid #1a4a3e; border-radius: 8px; padding: 1.5rem; }
+  .row-center { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .divider { border: none; border-top: 0.5px solid none; margin: 2rem 0; }
+  .swatch-row { display: flex; gap: 8px; }
+  .sw { border-radius: 8px; height: 48px; flex: 1; }
+  .sw-label { font-size: 11px; margin-top: 5px; }
+  .sw-hex { font-size: 10px; font-family: 'Ubuntu Mono', monospace; }
+  .sw-group { flex: 1; }
+
+  /* STATUSES */
+  .ti {
+    font-family: "tabler-icons" !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .badge { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; }
+  .status-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .status-card { border-radius: 8px; padding: 1rem; }
+  .status-name { font-size: 13px; font-weight: 500; margin: 0 0 2px; }
+  .status-meta { font-size: 11px; margin: 0 0 10px; }
+  .status-yaml { font-size: 11px; font-family: 'Ubuntu Mono', monospace; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+</style>
+
+<div style="padding: 0.5rem 0 1rem;">
+
+  <!-- PRIMARY LOGO -->
+  <div class="section">
+    <p class="section-label">Primary logo — light background</p>
+    <div class="card" style="display:flex; align-items:center; justify-content:center; padding: 2.5rem;">
+      <svg width="280" viewBox="0 0 280 72">
+        <defs>
+          <style>
+            @import url(https://googleapis.com);.logo-text{font-family:&quot;Ubuntu&quot;,sans-serif}
+          </style>
+        </defs>
+        <title>Waypoint Logo - Primary - Light Background</title>
+        <path fill="#1d9e75" d="m30 4 24 24-24 24L6 28z"/>
+        <path fill="#0f6e56" d="m30 10 18 18-18 18-18-18z"/>
+        <circle cx="30" cy="28" r="7" fill="#fff"/>
+        <circle cx="30" cy="28" r="3.5" fill="#1d9e75"/>
+        <rect x="26" y="48" width="8" height="10" rx="1" fill="#1d9e75"/>
+        <path fill="#1d9e75" d="M22 56h16l-8 8z"/>
+        <text x="70" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="500" fill="#085041">way</text>
+        <text x="128" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="300" fill="#1d9e75">point</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- DARK VERSION -->
+  <div class="section">
+    <p class="section-label">Primary logo — dark background</p>
+    <div class="card-dark" style="display:flex; align-items:center; justify-content:center; padding: 2.5rem;">
+      <svg width="280" viewBox="0 0 280 72" xmlns="http://www.w3.org/2000/svg" role="img">
+        <svg width="280" viewBox="0 0 280 72">
+          <defs>
+            <style>
+              @import url(https://googleapis.com);.logo-text{font-family:&quot;Ubuntu&quot;,sans-serif}
+            </style>
+          </defs>
+          <title>Waypoint Logo - Primary - Dark Background</title>
+          <polygon points="30,4 54,28 30,52 6,28" fill="#5DCAA5"/>
+          <polygon points="30,10 48,28 30,46 12,28" fill="#1D9E75"/>
+          <circle cx="30" cy="28" r="7" fill="#0c2e27"/>
+          <circle cx="30" cy="28" r="3.5" fill="#5DCAA5"/>
+          <rect x="26" y="48" width="8" height="10" rx="1" fill="#5DCAA5"/>
+          <polygon points="22,56 38,56 30,64" fill="#5DCAA5"/>
+          <text x="70" y="38" font-family="Ubuntu, sans-serif" font-size="30" font-weight="500" fill="#9FE1CB">way</text>
+          <text x="128" y="38" font-family="Ubuntu, sans-serif" font-size="30" font-weight="300" fill="#5DCAA5">point</text>
+        </svg>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ICON VARIANTS -->
+  <div class="section">
+    <p class="section-label">Icon mark — size variants</p>
+    <div class="card">
+      <div class="row-center" style="justify-content: space-around; padding: 1rem 0; flex-wrap: wrap; gap: 2rem;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#1D9E75"/>
+            <polygon points="32,10 50,28 32,46 14,28" fill="white" opacity="0.2"/>
+            <polygon points="32,10 50,28 32,46 14,28" fill="none" stroke="white" stroke-width="1.5"/>
+            <circle cx="32" cy="28" r="6" fill="white"/>
+            <circle cx="32" cy="28" r="3" fill="#1D9E75"/>
+            <rect x="29" y="44" width="6" height="8" rx="1" fill="white"/>
+            <polygon points="26,50 38,50 32,57" fill="white"/>
+          </svg>
+          <span style="font-size:11px;">App icon</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#1D9E75"/>
+            <polygon points="32,10 50,28 32,46 14,28" fill="white" opacity="0.2"/>
+            <polygon points="32,10 50,28 32,46 14,28" fill="none" stroke="white" stroke-width="1.5"/>
+            <circle cx="32" cy="28" r="6" fill="white"/>
+            <circle cx="32" cy="28" r="3" fill="#1D9E75"/>
+            <rect x="29" y="44" width="6" height="8" rx="1" fill="white"/>
+            <polygon points="26,50 38,50 32,57" fill="white"/>
+          </svg>
+          <span style="font-size:11px;">Favicon / tab</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="24" height="24" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#1D9E75"/>
+            <polygon points="32,10 50,28 32,46 14,28" fill="white" opacity="0.2"/>
+            <polygon points="32,10 50,28 32,46 14,28" fill="none" stroke="white" stroke-width="1.5"/>
+            <circle cx="32" cy="28" r="6" fill="white"/>
+            <circle cx="32" cy="28" r="3" fill="#1D9E75"/>
+            <rect x="29" y="44" width="6" height="8" rx="1" fill="white"/>
+            <polygon points="26,50 38,50 32,57" fill="white"/>
+          </svg>
+          <span style="font-size:11px;">Navbar / badge</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="40" height="52" viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,2 38,20 20,38 2,20" fill="#1D9E75"/>
+            <polygon points="20,7 33,20 20,33 7,20" fill="#0F6E56"/>
+            <circle cx="20" cy="20" r="5.5" fill="white"/>
+            <circle cx="20" cy="20" r="2.5" fill="#1D9E75"/>
+            <rect x="17" y="37" width="6" height="8" rx="1" fill="#1D9E75"/>
+            <polygon points="14,43 26,43 20,50" fill="#1D9E75"/>
+          </svg>
+          <span style="font-size:11px;">Standalone mark</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PALETTE -->
+  <div class="section">
+    <p class="section-label">Color system</p>
+    <div class="swatch-row" style="margin-bottom: 1.25rem;">
+      <div class="sw-group"><div class="sw" style="background:#E1F5EE;"></div><p class="sw-label">Mist</p><p class="sw-hex">#E1F5EE</p></div>
+      <div class="sw-group"><div class="sw" style="background:#9FE1CB;"></div><p class="sw-label">Jade</p><p class="sw-hex">#9FE1CB</p></div>
+      <div class="sw-group"><div class="sw" style="background:#5DCAA5;"></div><p class="sw-label">Mint</p><p class="sw-hex">#5DCAA5</p></div>
+      <div class="sw-group"><div class="sw" style="background:#1D9E75;"></div><p class="sw-label">Waypoint</p><p class="sw-hex">#1D9E75</p></div>
+      <div class="sw-group"><div class="sw" style="background:#0F6E56;"></div><p class="sw-label">Deep teal</p><p class="sw-hex">#0F6E56</p></div>
+      <div class="sw-group"><div class="sw" style="background:#085041;"></div><p class="sw-label">Forest</p><p class="sw-hex">#085041</p></div>
+      <div class="sw-group"><div class="sw" style="background:#04342C;"></div><p class="sw-label">Midnight</p><p class="sw-hex">#04342C</p></div>
+    </div>
+    <div class="swatch-row">
+      <div class="sw-group"><div class="sw" style="background:#F1EFE8;"></div><p class="sw-label">Parchment</p><p class="sw-hex">#F1EFE8</p></div>
+      <div class="sw-group"><div class="sw" style="background:#D3D1C7;"></div><p class="sw-label">Stone</p><p class="sw-hex">#D3D1C7</p></div>
+      <div class="sw-group"><div class="sw" style="background:#888780;"></div><p class="sw-label">Drift</p><p class="sw-hex">#888780</p></div>
+      <div class="sw-group"><div class="sw" style="background:#444441;"></div><p class="sw-label">Slate</p><p class="sw-hex">#444441</p></div>
+      <div class="sw-group"><div class="sw" style="background:#FAC775;"></div><p class="sw-label">Amber ✦</p><p class="sw-hex">#FAC775</p></div>
+      <div class="sw-group"><div class="sw" style="background:#EF9F27;"></div><p class="sw-label">Gold ✦</p><p class="sw-hex">#EF9F27</p></div>
+      <div class="sw-group"><div class="sw" style="background:#BA7517;"></div><p class="sw-label">Honey ✦</p><p class="sw-hex">#BA7517</p></div>
+      <div class="sw-group"><div class="sw" style="background:#AFA9EC;"></div><p class="sw-label">Lavender ✦</p><p class="sw-hex">#AFA9EC</p></div>
+    </div>
+    <p style="font-size:12px; margin-top: 0.75rem;">✦ Accent — progress indicators, completions, highlights</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- TYPOGRAPHY -->
+  <div class="section">
+    <p class="section-label">Typography — Ubuntu</p>
+    <div class="card">
+      <div style="border-bottom: 0.5px solid none; padding-bottom: 1rem; margin-bottom: 1rem;">
+        <span style="font-size:11px;">Display / hero — Ubuntu 500</span>
+        <p style="font-size:32px; font-weight:500; color:#085041; margin:4px 0 0; line-height:1.2; font-family:'Ubuntu',sans-serif;">Your learning, mapped.</p>
+      </div>
+      <div style="border-bottom: 0.5px solid none; padding-bottom: 1rem; margin-bottom: 1rem;">
+        <span style="font-size:11px;">Section heading — Ubuntu 500</span>
+        <p style="font-size:20px; font-weight:500; color:#085041; margin:4px 0 0; font-family:'Ubuntu',sans-serif;">Kubernetes — Core modules</p>
+      </div>
+      <div style="border-bottom: 0.5px solid none; padding-bottom: 1rem; margin-bottom: 1rem;">
+        <span style="font-size:11px;">Body — Ubuntu 400</span>
+        <p style="font-size:15px; font-weight:400; color:#085041; margin:4px 0 0; line-height:1.7; font-family:'Ubuntu',sans-serif;">Track progress across subjects, milestones, and modules — all from a single YAML file and dashboard.</p>
+      </div>
+      <div style="border-bottom: 0.5px solid none; padding-bottom: 1rem; margin-bottom: 1rem;">
+        <span style="font-size:11px;">Light accent — Ubuntu 300</span>
+        <p style="font-size:18px; font-weight:300; color:#1D9E75; margin:4px 0 0; font-family:'Ubuntu',sans-serif;">Structure your path. Own your progress.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- STATUSES -->
+  <div class="section">
+    <p class="section-label">Status system</p>
+      <div class="status-row" style="margin-bottom: 1.5rem;">
+        <div class="status-card" style="background:#F1EFE8; border: 0.5px solid #D3D1C7;">
+        <p class="status-name" style="color:#2C2C2A;">Not started</p>
+        <p class="status-meta" style="color:#5F5E5A;">Module not yet begun</p>
+        <span class="badge" style="background:#D3D1C7; color:#2C2C2A;">
+          <i class="ti ti-circle" aria-hidden="true" style="font-size:14px;"></i> Not started
+        </span>
+        <br><span class="status-yaml" style="background:#D3D1C7; color:#444441; margin-top:8px;">not_started</span>
+      </div>
+        <div class="status-card" style="background:#E1F5EE; border: 0.5px solid #9FE1CB;">
+        <p class="status-name" style="color:#04342C;">In progress</p>
+        <p class="status-meta" style="color:#0F6E56;">Currently being worked on</p>
+        <span class="badge" style="background:#9FE1CB; color:#04342C;">
+          <i class="ti ti-clock" aria-hidden="true" style="font-size:14px;"></i> In progress
+        </span>
+        <br><span class="status-yaml" style="background:#9FE1CB; color:#085041; margin-top:8px;">in_progress</span>
+      </div>
+        <div class="status-card" style="background:#FAEEDA; border: 0.5px solid #FAC775;">
+        <p class="status-name" style="color:#412402;">Complete</p>
+        <p class="status-meta" style="color:#854F0B;">Finished, date recorded</p>
+        <span class="badge" style="background:#FAC775; color:#412402;">
+          <i class="ti ti-check" aria-hidden="true" style="font-size:14px;"></i> Complete
+        </span>
+        <br><span class="status-yaml" style="background:#FAC775; color:#633806; margin-top:8px;">complete</span>
+      </div>
+        <div class="status-card" style="background:#EEEDFE; border: 0.5px solid #AFA9EC;">
+        <p class="status-name" style="color:#26215C;">Skipped</p>
+        <p class="status-meta" style="color:#534AB7;">Intentionally bypassed</p>
+        <span class="badge" style="background:#AFA9EC; color:#26215C;">
+          <i class="ti ti-arrow-right" aria-hidden="true" style="font-size:14px;"></i> Skipped
+        </span>
+        <br><span class="status-yaml" style="background:#AFA9EC; color:#3C3489; margin-top:8px;">skipped</span>
+      </div>
+      </div>
+
+    <hr class="divider">
+
+    <p class="section-label">Inline badge usage</p>
+    <div class="card">
+      <div style="display:flex; flex-direction:column; gap: 12px;">
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px 0; border-bottom: 0.5px solid none">
+          <span style="font-size:14px;">What is Kubernetes?</span>
+          <span class="badge" style="background:#FAC775; color:#412402;"><i class="ti ti-check" aria-hidden="true" style="font-size:13px;"></i> Complete</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px 0; border-bottom: 0.5px solid none">
+          <span style="font-size:14px;">Cluster architecture</span>
+          <span class="badge" style="background:#9FE1CB; color:#04342C;"><i class="ti ti-clock" aria-hidden="true" style="font-size:13px;"></i> In progress</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px 0; border-bottom: 0.5px solid none">
+          <span style="font-size:14px;">kubectl basics</span>
+          <span class="badge" style="background:#D3D1C7; color:#2C2C2A;"><i class="ti ti-circle" aria-hidden="true" style="font-size:13px;"></i> Not started</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px 0;">
+          <span style="font-size:14px;">Helm basics</span>
+          <span class="badge" style="background:#AFA9EC; color:#26215C;"><i class="ti ti-arrow-right" aria-hidden="true" style="font-size:13px;"></i> Skipped</span>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <p class="section-label">Color assignments</p>
+    <div style="font-size:13px; line-height:2;">
+      <span style="display:inline-block; width:12px; height:12px; border-radius:3px; background:#D3D1C7; margin-right:6px; vertical-align:middle;"></span>Gray — not started &nbsp;&nbsp;
+      <span style="display:inline-block; width:12px; height:12px; border-radius:3px; background:#9FE1CB; margin-right:6px; vertical-align:middle;"></span>Teal — in progress &nbsp;&nbsp;
+      <span style="display:inline-block; width:12px; height:12px; border-radius:3px; background:#FAC775; margin-right:6px; vertical-align:middle;"></span>Amber — complete &nbsp;&nbsp;
+      <span style="display:inline-block; width:12px; height:12px; border-radius:3px; background:#AFA9EC; margin-right:6px; vertical-align:middle;"></span>Purple — skipped
+    </div>
+  </div>
+
+</div>

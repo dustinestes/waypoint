@@ -1,0 +1,166 @@
+# =============================================================================
+# waypoint.yaml
+# =============================================================================
+# Learning path configuration for Waypoint.
+# Edit this file to define and track progress across subjects, milestones,
+# and modules. All fields marked (optional) can be left blank or omitted.
+#
+# ENUMS — only these exact values are valid:
+#   status:          not_started | in_progress | complete | skipped
+#   difficulty:      beginner | intermediate | advanced
+#   type:            reading | video | lab | quiz | mixed
+#   resource.type:   notes | lab | script | external
+#
+# DATES — use ISO 8601 format: YYYY-MM-DD (e.g. 2025-03-12)
+# =============================================================================
+
+waypoint:
+  version: "1.0"
+  created: "2025-01-01"           # Date this file was first created
+  author: "Your Name"             # Learner or educator who owns this file
+
+# =============================================================================
+# SUBJECTS
+# Top-level learning areas. Each subject contains one or more milestones.
+# =============================================================================
+
+subjects:
+
+  - id: kubernetes                 # Unique slug — never change once set
+    title: "Kubernetes"
+    description: "Container orchestration from core concepts to production patterns"
+    icon:                          # (optional) relative path from repo root e.g. assets/k8s.png
+    estimated_time: "40 hours"     # (optional) free text — "40 hours", "6 weeks", "3 days", etc.
+
+    # -------------------------------------------------------------------------
+    # MILESTONES
+    # Logical groupings of modules within a subject.
+    # -------------------------------------------------------------------------
+
+    milestones:
+
+      - id: foundations            # Unique slug within this subject
+        title: "Foundations"
+        description: "Core concepts and architecture"
+        order: 1                   # Controls display order in the dashboard
+        estimated_time: "8 hours"  # (optional)
+
+        # ---------------------------------------------------------------------
+        # MODULES
+        # Individual learning units within a milestone.
+        # ---------------------------------------------------------------------
+
+        modules:
+
+          - id: what-is-kubernetes       # Unique slug within this milestone
+            title: "What is Kubernetes?"
+            order: 1                     # Controls display order in the dashboard
+            difficulty: beginner         # (optional) beginner | intermediate | advanced
+            type: reading                # (optional) reading | video | lab | quiz | mixed
+            estimated_time: "1 hour"     # (optional)
+            status: complete             # not_started | in_progress | complete | skipped
+            started_date: "2025-03-10"   # (optional) ISO 8601 — fill in when you begin
+            completed_date: "2025-03-12" # (optional) ISO 8601 — fill in when done
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://kubernetes.io/docs/concepts/overview/"
+              - type: notes              # notes | lab | script | external
+                label: "Notes"
+                path: "notes/kubernetes/foundations/what-is-kubernetes.md"
+
+          - id: cluster-architecture
+            title: "Cluster architecture"
+            order: 2
+            difficulty: intermediate
+            type: mixed
+            estimated_time: "2 hours"
+            status: in_progress
+            started_date: "2025-03-13"
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://kubernetes.io/docs/concepts/architecture/"
+              - type: lab
+                label: "Lab"
+                path: "labs/kubernetes/foundations/cluster-setup.sh"
+              - type: notes
+                label: "Notes"
+                path: "notes/kubernetes/foundations/cluster-architecture.md"
+
+          - id: kubectl-basics
+            title: "kubectl basics"
+            order: 3
+            difficulty: beginner
+            type: reading
+            estimated_time:              # (optional — not provided for this module)
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://kubernetes.io/docs/reference/kubectl/"
+              - type: external
+                label: "Cheatsheet"
+                url: "https://kubernetes.io/docs/reference/kubectl/cheatsheet/"
+
+      - id: workloads
+        title: "Workloads"
+        description: "Pods, deployments, services, and beyond"
+        order: 2
+        estimated_time: "12 hours"
+
+        modules:
+
+          - id: pods
+            title: "Pods"
+            order: 1
+            difficulty: beginner
+            type: reading
+            estimated_time: "1 hour"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://kubernetes.io/docs/concepts/workloads/pods/"
+              - type: notes
+                label: "Notes"
+                path: "notes/kubernetes/workloads/pods.md"
+
+          - id: deployments
+            title: "Deployments"
+            order: 2
+            difficulty: intermediate
+            type: lab
+            estimated_time: "2 hours"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: lab
+                label: "Lab"
+                path: "labs/kubernetes/workloads/rolling-update.sh"
+              - type: notes
+                label: "Notes"
+                path: "notes/kubernetes/workloads/deployments.md"
+
+          - id: helm-basics
+            title: "Helm basics"
+            order: 3
+            difficulty: intermediate
+            type: reading
+            estimated_time: "3 hours"
+            status: skipped
+            started_date:
+            completed_date:
+            resources:
+              - type: notes
+                label: "Notes"
+                path: "notes/kubernetes/workloads/helm-basics.md"
+              - type: external
+                label: "Docs"
+                url: "https://helm.sh/docs/"

@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waypoint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.42.0/dist/tabler-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --wp-mist:        #E1F5EE;
+      --wp-jade:        #9FE1CB;
+      --wp-mint:        #5DCAA5;
+      --wp-teal:        #1D9E75;
+      --wp-deep:        #0F6E56;
+      --wp-forest:      #085041;
+      --wp-midnight:    #04342C;
+      --wp-parchment:   #F1EFE8;
+      --wp-stone:       #D3D1C7;
+      --wp-drift:       #888780;
+      --wp-slate:       #444441;
+      --wp-ink:         #2C2C2A;
+      --wp-amber:       #FAC775;
+      --wp-gold:        #EF9F27;
+      --wp-honey:       #BA7517;
+      --wp-amber-bg:    #FAEEDA;
+      --wp-amber-dark:  #412402;
+      --wp-amber-mid:   #854F0B;
+      --wp-lavender:    #AFA9EC;
+      --wp-violet:      #534AB7;
+      --wp-indigo:      #26215C;
+      --wp-lavender-bg: #EEEDFE;
+      --bg:             #F4F2EB;
+      --surface:        #FDFCF9;
+      --border:         #D3D1C7;
+      --border-light:   #EBEBDF;
+      --text-primary:   #2C2C2A;
+      --text-secondary: #5F5E5A;
+      --text-muted:     #888780;
+      --radius-sm:      6px;
+      --radius-md:      10px;
+      --radius-lg:      14px;
+      --radius-xl:      99px;
+    }
+
+    /* ── Theme: Default (dark header) ── */
+    body.theme-default {
+      --theme-subject-bg:         var(--wp-forest);
+      --theme-subject-bg-hover:   var(--wp-deep);
+      --theme-subject-title:      var(--wp-mist);
+      --theme-subject-desc:       var(--wp-jade);
+      --theme-subject-pct:        var(--wp-teal);
+      --theme-subject-border:     var(--wp-forest);
+      --theme-milestone-bg:       var(--wp-mist);
+      --theme-milestone-bg-hover: var(--wp-jade);
+      --theme-milestone-title:    var(--wp-forest);
+      --theme-milestone-border-l: 3px solid var(--wp-teal);
+      --theme-module-bg:          var(--surface);
+      --theme-module-bg-hover:    var(--bg);
+      --theme-module-border-l:    3px solid var(--wp-stone);
+    }
+    /* ── Theme: Minimal (left border depth) ── */
+    body.theme-minimal {
+      --theme-subject-bg:         var(--surface);
+      --theme-subject-bg-hover:   var(--wp-mist);
+      --theme-subject-title:      var(--wp-forest);
+      --theme-subject-desc:       var(--text-muted);
+      --theme-subject-pct:        var(--wp-teal);
+      --theme-subject-border:     var(--border);
+      --theme-milestone-bg:       var(--surface);
+      --theme-milestone-bg-hover: var(--bg);
+      --theme-milestone-title:    var(--text-primary);
+      --theme-milestone-border-l: 3px solid var(--wp-teal);
+      --theme-module-bg:          var(--bg);
+      --theme-module-bg-hover:    var(--wp-parchment);
+      --theme-module-border-l:    3px solid var(--wp-jade);
+    }
+    /* ── Theme: Warm (teal header) ── */
+    body.theme-warm {
+      --theme-subject-bg:         var(--wp-teal);
+      --theme-subject-bg-hover:   var(--wp-deep);
+      --theme-subject-title:      white;
+      --theme-subject-desc:       var(--wp-jade);
+      --theme-subject-pct:        var(--wp-mist);
+      --theme-subject-border:     var(--wp-teal);
+      --theme-milestone-bg:       var(--wp-parchment);
+      --theme-milestone-bg-hover: var(--wp-mist);
+      --theme-milestone-title:    var(--text-primary);
+      --theme-milestone-border-l: 3px solid var(--wp-teal);
+      --theme-module-bg:          var(--surface);
+      --theme-module-bg-hover:    var(--bg);
+      --theme-module-border-l:    3px solid var(--wp-jade);
+    }
+
+    /* ── Theme picker ── */
+    .btn-theme {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px;
+      color: var(--text-muted); background: var(--surface);
+      border: 0.5px solid var(--border); border-radius: var(--radius-xl);
+      cursor: pointer; transition: background 0.15s, color 0.15s;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .btn-theme:hover { background: var(--wp-mist); color: var(--wp-teal); border-color: var(--wp-jade); }
+    .theme-picker-wrap { position: relative; display: inline-block; }
+    .theme-popover {
+      display: none; position: absolute; right: 0; top: calc(100% + 8px);
+      background: var(--surface); border: 0.5px solid var(--border);
+      border-radius: var(--radius-md); width: 252px; z-index: 200;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1); overflow: hidden;
+      animation: dropin 0.15s ease;
+    }
+    .theme-popover.open { display: block; }
+    .theme-popover-header { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); padding: 10px 14px 8px; }
+    .theme-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 14px; cursor: pointer; transition: background 0.1s;
+      border-top: 0.5px solid var(--border-light);
+    }
+    .theme-option:hover { background: var(--bg); }
+    .theme-option.active { background: var(--wp-mist); }
+    .theme-swatches { display: flex; gap: 3px; flex-shrink: 0; }
+    .theme-swatch { width: 14px; height: 14px; border-radius: 3px; border: 0.5px solid rgba(0,0,0,0.08); }
+    .theme-info { flex: 1; }
+    .theme-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+    .theme-desc { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .theme-check { font-size: 13px; color: var(--wp-teal); }
+
+    /* ── Footer ── */
+    .footer {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1080px; margin: 3rem auto 0; padding: 1rem 1.5rem;
+      border-top: 0.5px solid var(--border-light);
+      flex-wrap: wrap; gap: 0.75rem;
+    }
+    .footer-left { display: flex; align-items: center; gap: 10px; }
+    .footer-logo { display: flex; align-items: center; gap: 6px; text-decoration: none; }
+    .footer-way   { font-size: 13px; font-weight: 500; color: var(--wp-forest); padding-right: 2px; }
+    .footer-point { font-size: 13px; font-weight: 300; color: var(--wp-teal); }
+    .footer-divider { width: 1px; height: 12px; background: var(--border); }
+    .footer-tagline { font-size: 12px; color: var(--text-muted); }
+    .footer-version { font-size: 11px; color: var(--border); font-family: 'Ubuntu Mono', monospace; }
+    .footer-right { display: flex; align-items: center; gap: 14px; }
+    .footer-link {
+      font-size: 12px; color: var(--text-muted); text-decoration: none;
+      display: flex; align-items: center; gap: 4px; transition: color 0.1s;
+    }
+    .footer-link:hover { color: var(--wp-teal); }
+
+    body {
+      font-family: 'Ubuntu', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .layout { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* ── Navbar ── */
+    .navbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; max-width: 1080px; margin: 0 auto;
+    }
+    .navbar-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .navbar-wordmark { display: flex; align-items: baseline; }
+    .navbar-wordmark .way   { font-size: 20px; font-weight: 500; color: var(--wp-forest); padding-right: 2px; }
+    .navbar-wordmark .point { font-size: 20px; font-weight: 300; color: var(--wp-teal); }
+    .navbar-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    .file-status {
+      display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted);
+      background: var(--surface); border: 0.5px solid var(--border);
+      border-radius: var(--radius-xl); padding: 5px 12px;
+    }
+    .file-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+    .file-status.loaded .dot { background: var(--wp-teal); }
+    .file-status.loaded { color: var(--text-secondary); }
+
+    .unsaved-pill {
+      display: none; align-items: center; gap: 5px; font-size: 12px; font-weight: 500;
+      color: var(--wp-amber-mid); background: var(--wp-amber-bg);
+      border: 0.5px solid var(--wp-amber); border-radius: var(--radius-xl); padding: 5px 12px;
+    }
+    .unsaved-pill.visible { display: flex; }
+    .unsaved-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--wp-gold); flex-shrink: 0; }
+
+    .btn-load {
+      display: flex; align-items: center; gap: 6px; font-family: 'Ubuntu', sans-serif;
+      font-size: 12px; font-weight: 500; color: var(--wp-forest); background: var(--wp-mist);
+      border: 0.5px solid var(--wp-jade); border-radius: var(--radius-xl);
+      padding: 5px 14px; cursor: pointer; transition: background 0.15s;
+    }
+    .btn-load:hover { background: var(--wp-jade); }
+
+    .btn-download {
+      display: none; align-items: center; gap: 6px; font-family: 'Ubuntu', sans-serif;
+      font-size: 12px; font-weight: 500; color: var(--text-muted); background: var(--wp-parchment);
+      border: 0.5px solid var(--border); border-radius: var(--radius-xl);
+      padding: 5px 14px; cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .btn-download.visible { display: flex; }
+    .btn-download.has-changes { color: white; background: var(--wp-teal); border-color: var(--wp-deep); }
+    .btn-download.has-changes:hover { background: var(--wp-deep); }
+    #file-input { display: none; }
+
+    /* ── Upload screen ── */
+    #upload-screen {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 60vh; text-align: center; gap: 1.5rem; animation: fadein 0.4s ease;
+    }
+    .upload-icon {
+      width: 72px; height: 72px; border-radius: var(--radius-lg);
+      background: var(--wp-mist); border: 0.5px solid var(--wp-jade);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; color: var(--wp-teal);
+    }
+    .upload-title { font-size: 22px; font-weight: 500; }
+    .upload-sub   { font-size: 14px; color: var(--text-muted); max-width: 360px; line-height: 1.7; }
+    .drop-zone {
+      border: 1.5px dashed var(--wp-jade); border-radius: var(--radius-lg);
+      padding: 2rem 3rem; cursor: pointer; background: var(--surface);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .drop-zone:hover, .drop-zone.dragover { background: var(--wp-mist); border-color: var(--wp-teal); }
+    .drop-zone p { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    .drop-zone strong { color: var(--wp-teal); font-weight: 500; }
+
+    /* ── Dashboard ── */
+    #dashboard { display: none; animation: fadein 0.4s ease; }
+    @keyframes fadein { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── Restore banner ── */
+    #restore-banner {
+      display: none; align-items: center; justify-content: space-between;
+      background: var(--wp-amber-bg); border: 0.5px solid var(--wp-amber);
+      border-radius: var(--radius-md); padding: 0.875rem 1.25rem;
+      gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    #restore-banner.visible { display: flex; }
+    .restore-left { display: flex; align-items: center; gap: 10px; }
+    .restore-text { font-size: 13px; font-weight: 500; color: var(--wp-amber-dark); }
+    .restore-meta { font-size: 12px; color: var(--wp-amber-mid); }
+    .restore-actions { display: flex; gap: 8px; }
+    .btn-restore {
+      font-size: 12px; font-weight: 500; color: white; background: var(--wp-teal);
+      border: none; border-radius: var(--radius-xl); padding: 5px 14px;
+      cursor: pointer; font-family: 'Ubuntu', sans-serif; transition: background 0.15s;
+    }
+    .btn-restore:hover { background: var(--wp-deep); }
+    .btn-discard {
+      font-size: 12px; font-weight: 500; color: var(--text-muted); background: var(--wp-parchment);
+      border: 0.5px solid var(--border); border-radius: var(--radius-xl); padding: 5px 14px;
+      cursor: pointer; font-family: 'Ubuntu', sans-serif; transition: background 0.15s;
+    }
+    .btn-discard:hover { background: var(--border); }
+
+    /* ── Summary ── */
+    .summary-bar {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px; margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--surface); border: 0.5px solid var(--border);
+      border-radius: var(--radius-md); padding: 1rem 1.25rem;
+    }
+    .stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .stat-value { font-size: 26px; font-weight: 500; line-height: 1; color: var(--text-primary); }
+    .stat-card.accent-teal   .stat-value { color: var(--wp-teal); }
+    .stat-card.accent-amber  .stat-value { color: var(--wp-honey); }
+    .stat-card.accent-violet .stat-value { color: var(--wp-violet); }
+
+    /* ── Progress ── */
+    .progress-wrap { margin-bottom: 2rem; }
+    .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .progress-header h2 { font-size: 13px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); }
+    .progress-header .pct { font-size: 13px; font-weight: 500; color: var(--wp-teal); }
+    .progress-track { height: 8px; background: var(--border-light); border-radius: 99px; overflow: hidden; }
+    .progress-fill  { height: 100%; border-radius: 99px; background: var(--wp-teal); transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+
+    /* ── Section heading ── */
+    .section-heading {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px;
+    }
+    .count-pill { background: var(--wp-jade); color: var(--wp-forest); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 99px; }
+    .section-divider { margin: 2rem 0 1rem; }
+
+    /* ── Active strip ── */
+    .active-strip { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
+    .active-card {
+      background: var(--surface); border: 0.5px solid var(--wp-jade);
+      border-left: 3px solid var(--wp-teal);
+      border-radius: var(--radius-md); padding: 0.875rem 1rem;
+      flex: 1; min-width: 220px; max-width: 340px;
+    }
+    .active-card-subject { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+    .active-card-title   { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; }
+    .active-card-meta    { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+    /* ── Subject blocks ── */
+    .subjects-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .subject-block { background: var(--surface); border: 0.5px solid var(--theme-subject-border, var(--border)); border-radius: var(--radius-lg); }
+    .subject-header { border-radius: var(--radius-lg); background: var(--theme-subject-bg, var(--surface)); }
+    .subject-block.open .subject-header { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+    .subject-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 1.5rem; cursor: pointer; user-select: none; gap: 1rem; transition: background 0.1s;
+    }
+    .subject-header:hover { background: var(--theme-subject-bg-hover, var(--wp-mist)); }
+    .subject-header-left  { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+    .subject-title { font-size: 17px; font-weight: 500; color: var(--theme-subject-title, var(--text-primary)); }
+    .subject-desc  { font-size: 13px; color: var(--theme-subject-desc, var(--text-muted)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .subject-header-right { display: flex; align-items: center; gap: 1.25rem; flex-shrink: 0; }
+    .subject-pct { font-size: 14px; font-weight: 500; color: var(--theme-subject-pct, var(--wp-teal)); min-width: 36px; text-align: right; }
+    .subject-progress-track { width: 100px; height: 5px; background: rgba(255,255,255,0.25); border-radius: 99px; overflow: hidden; }
+    .subject-progress-fill  { height: 100%; border-radius: 99px; background: var(--theme-subject-pct, var(--wp-teal)); }
+    .subject-meta-chips { display: flex; gap: 6px; align-items: center; }
+    .chip {
+      font-size: 11px; color: var(--theme-subject-desc, var(--text-muted));
+      background: rgba(255,255,255,0.15); border: 0.5px solid rgba(255,255,255,0.25);
+      border-radius: 99px; padding: 2px 8px; display: flex; align-items: center; gap: 4px; white-space: nowrap;
+    }
+    .milestone-block .chip, .module-row .chip {
+      color: var(--text-muted); background: var(--bg); border-color: var(--border);
+    }
+    .chevron { font-size: 16px; color: var(--theme-subject-pct, var(--text-muted)); transition: transform 0.2s ease; flex-shrink: 0; }
+    .subject-block.open .chevron { transform: rotate(180deg); }
+
+    /* ── Milestones ── */
+    .milestones-wrap { border-top: 0.5px solid var(--border-light); display: none; }
+    .subject-block.open .milestones-wrap { display: block; }
+    .milestone-block { border-bottom: 0.5px solid var(--border-light); }
+    .milestone-block:last-child { border-bottom: none; }
+    .milestone-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.875rem 1.5rem; cursor: pointer; user-select: none; transition: background 0.1s;
+      background: var(--theme-milestone-bg, var(--surface));
+      border-left: var(--theme-milestone-border-l, none);
+    }
+    .milestone-header:hover { background: var(--theme-milestone-bg-hover, var(--bg)); }
+    .milestone-title-row { display: flex; align-items: center; gap: 10px; }
+    .milestone-order {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--bg); border: 0.5px solid var(--border);
+      font-size: 11px; font-weight: 700; color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .milestone-title  { font-size: 14px; font-weight: 500; color: var(--theme-milestone-title, var(--text-primary)); }
+    .milestone-desc   { font-size: 12px; color: var(--text-muted); margin-left: 32px; margin-top: 1px; }
+    .milestone-right  { display: flex; align-items: center; gap: 10px; }
+    .milestone-pct    { font-size: 12px; font-weight: 500; color: var(--wp-teal); }
+    .milestone-track  { width: 60px; height: 4px; background: var(--border-light); border-radius: 99px; overflow: hidden; }
+    .milestone-fill   { height: 100%; border-radius: 99px; background: var(--wp-teal); }
+    .milestone-chevron { font-size: 14px; color: var(--text-muted); transition: transform 0.2s; }
+    .milestone-block.open .milestone-chevron { transform: rotate(180deg); }
+
+    /* ── Modules ── */
+    .modules-wrap { display: none; }
+    .milestone-block.open .modules-wrap { display: block; }
+    .module-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1.5rem 0.75rem 2.5rem;
+      border-top: 0.5px solid var(--border-light); gap: 1rem; transition: background 0.1s;
+      background: var(--theme-module-bg, var(--surface));
+      border-left: var(--theme-module-border-l, none);
+    }
+    .module-row:hover { background: var(--theme-module-bg-hover, var(--bg)); }
+    .milestone-block:last-child:not(.open) .milestone-header { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+    .milestone-block:last-child.open .module-row:last-child   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+    .module-left  { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+    .module-title { font-size: 14px; color: var(--text-primary); }
+    .module-chips { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+    .module-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .module-links { display: flex; gap: 5px; flex-wrap: wrap; }
+    .module-dates { font-size: 11px; color: var(--text-muted); font-family: 'Ubuntu Mono', monospace; }
+
+    .resource-link {
+      font-size: 11px; color: var(--wp-deep); background: var(--wp-mist);
+      border: 0.5px solid var(--wp-jade); border-radius: var(--radius-sm);
+      padding: 3px 8px; text-decoration: none;
+      display: flex; align-items: center; gap: 4px; transition: background 0.1s; white-space: nowrap;
+    }
+    .resource-link:hover { background: var(--wp-jade); }
+
+    /* ── Badges ── */
+    .badge {
+      font-size: 11px; font-weight: 500; padding: 4px 11px; border-radius: 99px;
+      display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+      cursor: pointer; user-select: none; transition: opacity 0.1s;
+    }
+    .badge:hover { opacity: 0.8; }
+    .badge-not_started { background: #E8E6DF; color: var(--wp-slate); }
+    .badge-in_progress { background: var(--wp-jade); color: var(--wp-midnight); }
+    .badge-complete    { background: var(--wp-amber); color: var(--wp-amber-dark); }
+    .badge-skipped     { background: var(--wp-lavender); color: var(--wp-indigo); }
+
+    /* ── Status dropdown ── */
+    .badge-wrapper { position: relative; display: inline-block; }
+    .status-dropdown {
+      display: none; position: absolute; right: 0; top: calc(100% + 6px);
+      background: var(--surface); border: 0.5px solid var(--border);
+      border-radius: var(--radius-md); min-width: 215px; z-index: 100;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1); overflow: hidden;
+    }
+    .status-dropdown.open { display: block; animation: dropin 0.15s ease; }
+    @keyframes dropin { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+    .dropdown-header { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); padding: 10px 14px 6px; }
+    .dropdown-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 14px; cursor: pointer; transition: background 0.1s;
+      border-top: 0.5px solid var(--border-light); gap: 8px;
+    }
+    .dropdown-item:hover { background: var(--bg); }
+    .dropdown-item.current { background: var(--wp-mist); }
+    .dropdown-item-left { display: flex; align-items: center; gap: 8px; }
+    .dropdown-item-desc { font-size: 11px; color: var(--text-muted); }
+    .dropdown-check { font-size: 13px; color: var(--wp-teal); }
+
+    /* ── Chips ── */
+    .diff-chip { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 99px; white-space: nowrap; }
+    .diff-beginner     { background: var(--wp-mist); color: var(--wp-deep); }
+    .diff-intermediate { background: #FAEEDA; color: #854F0B; }
+    .diff-advanced     { background: #FAECE7; color: #993C1D; }
+    .type-chip { font-size: 10px; color: var(--text-muted); display: inline-flex; align-items: center; gap: 3px; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px;
+      background: var(--wp-ink); color: var(--wp-parchment);
+      font-size: 13px; padding: 10px 16px; border-radius: var(--radius-md);
+      z-index: 999; opacity: 0; pointer-events: none;
+      transition: opacity 0.2s ease; white-space: nowrap;
+    }
+    #toast.visible { opacity: 1; pointer-events: auto; }
+    #toast-undo {
+      font-size: 12px; font-weight: 500; color: var(--wp-jade); cursor: pointer;
+      margin-left: 4px; background: none; border: none;
+      font-family: 'Ubuntu', sans-serif; padding: 0;
+    }
+    #toast-undo:hover { text-decoration: underline; }
+
+  </style>
+</head>
+<body>
+
+<!-- Toast -->
+<div id="toast" role="status" aria-live="polite">
+  <i class="ti ti-check" aria-hidden="true" style="font-size:14px; color:var(--wp-jade);"></i>
+  <span id="toast-msg">Status updated</span>
+  <button id="toast-undo">Undo</button>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="navbar">
+    <a class="navbar-logo" href="#">
+      <svg width="28" height="36" viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,2 38,20 20,38 2,20" fill="#1D9E75"/>
+        <polygon points="20,7 33,20 20,33 7,20" fill="#0F6E56"/>
+        <circle cx="20" cy="20" r="5.5" fill="white"/>
+        <circle cx="20" cy="20" r="2.5" fill="#1D9E75"/>
+        <rect x="17" y="37" width="6" height="8" rx="1" fill="#1D9E75"/>
+        <polygon points="14,43 26,43 20,50" fill="#1D9E75"/>
+      </svg>
+      <div class="navbar-wordmark">
+        <span class="way">way</span><span class="point">point</span>
+      </div>
+    </a>
+    <div class="navbar-right">
+      <div class="file-status" id="file-status">
+        <span class="dot"></span>
+        <span id="file-status-text">No file loaded</span>
+      </div>
+      <div class="unsaved-pill" id="unsaved-pill">
+        <span class="dot"></span> Unsaved changes
+      </div>
+      <button class="btn-download" id="btn-download" aria-label="Download updated YAML">
+        <i class="ti ti-download" aria-hidden="true"></i> Download
+      </button>
+      <div class="theme-picker-wrap">
+        <button class="btn-theme" id="btn-theme" aria-label="Change theme" aria-haspopup="true">
+          <i class="ti ti-palette" aria-hidden="true"></i>
+        </button>
+        <div class="theme-popover" id="theme-popover">
+          <div class="theme-popover-header">Dashboard theme</div>
+          <div class="theme-option active" id="topt-default" onclick="setTheme('default')">
+            <div class="theme-swatches">
+              <div class="theme-swatch" style="background:#085041;"></div>
+              <div class="theme-swatch" style="background:#E1F5EE;"></div>
+              <div class="theme-swatch" style="background:#FDFCF9;"></div>
+            </div>
+            <div class="theme-info">
+              <div class="theme-name">Default</div>
+              <div class="theme-desc">Dark header, mist milestone</div>
+            </div>
+            <i class="ti ti-check theme-check" id="tcheck-default" aria-hidden="true"></i>
+          </div>
+          <div class="theme-option" id="topt-minimal" onclick="setTheme('minimal')">
+            <div class="theme-swatches">
+              <div class="theme-swatch" style="background:#FDFCF9; border-left:3px solid #085041;"></div>
+              <div class="theme-swatch" style="background:#FDFCF9; border-left:3px solid #1D9E75;"></div>
+              <div class="theme-swatch" style="background:#F4F2EB; border-left:3px solid #9FE1CB;"></div>
+            </div>
+            <div class="theme-info">
+              <div class="theme-name">Minimal</div>
+              <div class="theme-desc">Left border depth, white surfaces</div>
+            </div>
+            <i class="ti ti-check theme-check" id="tcheck-minimal" aria-hidden="true" style="display:none;"></i>
+          </div>
+          <div class="theme-option" id="topt-warm" onclick="setTheme('warm')">
+            <div class="theme-swatches">
+              <div class="theme-swatch" style="background:#1D9E75;"></div>
+              <div class="theme-swatch" style="background:#F4F2EB;"></div>
+              <div class="theme-swatch" style="background:#FDFCF9;"></div>
+            </div>
+            <div class="theme-info">
+              <div class="theme-name">Warm</div>
+              <div class="theme-desc">Brand teal header, parchment milestone</div>
+            </div>
+            <i class="ti ti-check theme-check" id="tcheck-warm" aria-hidden="true" style="display:none;"></i>
+          </div>
+        </div>
+      </div>
+      <button class="btn-load" id="btn-load" aria-label="Load YAML file">
+        <i class="ti ti-upload" aria-hidden="true"></i> Load YAML
+      </button>
+      <input type="file" id="file-input" accept=".yaml,.yml">
+    </div>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <!-- Upload screen -->
+  <div id="upload-screen">
+    <div class="upload-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+    <div>
+      <p class="upload-title">Your learning, mapped.</p>
+      <p class="upload-sub">Drop your <code>waypoint.yaml</code> below to load your learning path and track your progress.</p>
+    </div>
+    <div class="drop-zone" id="drop-zone" role="button" tabindex="0" onclick="document.getElementById('file-input').click()">
+      <i class="ti ti-file-upload" aria-hidden="true" style="font-size:28px; color:var(--wp-teal);"></i>
+      <p><strong>Click to browse</strong> or drag and drop your waypoint.yaml</p>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard">
+
+    <!-- Restore banner -->
+    <div id="restore-banner" role="alert">
+      <div class="restore-left">
+        <i class="ti ti-device-floppy" aria-hidden="true" style="font-size:20px; color:var(--wp-gold);"></i>
+        <div>
+          <div class="restore-text">You have unsaved changes from a previous session</div>
+          <div class="restore-meta" id="restore-meta">Restore to continue where you left off</div>
+        </div>
+      </div>
+      <div class="restore-actions">
+        <button class="btn-restore" id="btn-restore">Restore session</button>
+        <button class="btn-discard" id="btn-discard">Discard</button>
+      </div>
+    </div>
+
+    <!-- Summary bar -->
+    <div class="summary-bar" id="summary-bar"></div>
+
+    <!-- Overall progress -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <h2>Overall progress</h2>
+        <span class="pct" id="overall-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="overall-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Active modules -->
+    <div id="active-section" style="margin-bottom:2rem; display:none;">
+      <div class="section-heading">
+        <i class="ti ti-clock" aria-hidden="true"></i>
+        In progress
+        <span class="count-pill" id="active-count">0</span>
+      </div>
+      <div class="active-strip" id="active-strip"></div>
+    </div>
+
+    <!-- Subjects -->
+    <div class="section-heading section-divider">
+      <i class="ti ti-books" aria-hidden="true"></i>
+      Subjects
+    </div>
+    <div class="subjects-list" id="subjects-list"></div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<!-- IMPORTANT: You must retain the footer attribution element in its entirety and without modification. See LICENSE for details. -->
+<footer class="footer">
+  <div class="footer-left">
+    <a class="footer-logo" href="https://github.com/dustinestes/waypoint" target="_blank" rel="noopener">
+      <svg width="12" height="16" viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,2 38,20 20,38 2,20" fill="#1D9E75"/>
+        <polygon points="20,7 33,20 20,33 7,20" fill="#0F6E56"/>
+        <circle cx="20" cy="20" r="5.5" fill="white"/>
+        <circle cx="20" cy="20" r="2.5" fill="#1D9E75"/>
+        <rect x="17" y="37" width="6" height="8" rx="1" fill="#1D9E75"/>
+        <polygon points="14,43 26,43 20,50" fill="#1D9E75"/>
+      </svg>
+      <span><span class="footer-way">way</span><span class="footer-point">point</span></span>
+    </a>
+    <div class="footer-divider"></div>
+    <span class="footer-tagline">your learning, mapped</span>
+    <span class="footer-version">v1.0</span>
+  </div>
+  <div class="footer-right">
+    <a class="footer-link" href="https://github.com/dustinestes/waypoint" target="_blank" rel="noopener">
+      <i class="ti ti-brand-github" aria-hidden="true"></i> GitHub
+    </a>
+  </div>
+</footer>
+
+<script>
+  const CACHE_KEY  = 'waypoint_session';
+  const THEME_KEY  = 'waypoint_theme';
+  const THEMES     = ['default', 'minimal', 'warm'];
+  let currentTheme = 'default';
+  let yamlData = null;
+  let loadedFilename = 'waypoint.yaml';
+  let hasUnsaved = false;
+  let toastTimer = null;
+  let undoSnapshot = null;
+  let openDropdownId = null;
+  let fileHandle = null; // File System Access API handle — Chrome/Edge only
+
+  const supportsFileSystemAccess = 'showOpenFilePicker' in window;
+
+  const STATUS_LABELS = { not_started:'Not started', in_progress:'In progress', complete:'Complete', skipped:'Skipped' };
+  const STATUS_ICONS  = { not_started:'ti-circle', in_progress:'ti-clock', complete:'ti-check', skipped:'ti-arrow-right' };
+  const STATUS_DESCS  = { not_started:'Reset progress', in_progress:'Currently active', complete:'Auto-fills date', skipped:'Intentionally bypass' };
+  const TYPE_ICONS    = { reading:'ti-book', video:'ti-player-play', lab:'ti-terminal-2', quiz:'ti-list-check', mixed:'ti-layout-grid' };
+
+  /* ── Theme ── */
+  function setTheme(name) {
+    if (!THEMES.includes(name)) name = 'default';
+    currentTheme = name;
+    document.body.className = 'theme-' + name;
+    localStorage.setItem(THEME_KEY, name);
+    THEMES.forEach(t => {
+      document.getElementById('topt-' + t).classList.toggle('active', t === name);
+      document.getElementById('tcheck-' + t).style.display = t === name ? '' : 'none';
+    });
+    document.getElementById('theme-popover').classList.remove('open');
+  }
+
+  document.getElementById('btn-theme').addEventListener('click', e => {
+    e.stopPropagation();
+    document.getElementById('theme-popover').classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.theme-picker-wrap')) {
+      document.getElementById('theme-popover').classList.remove('open');
+    }
+  });
+
+  // Init theme from localStorage
+  setTheme(localStorage.getItem(THEME_KEY) || 'default');
+
+  /* ── File loading ── */
+
+  // "Load YAML" button — use File System Access API if available, else <input>
+  document.getElementById('btn-load').addEventListener('click', async e => {
+    e.preventDefault();
+    if (supportsFileSystemAccess) {
+      try {
+        const [handle] = await window.showOpenFilePicker({
+          types: [{ description: 'YAML files', accept: { 'text/yaml': ['.yaml', '.yml'] } }],
+          multiple: false
+        });
+        fileHandle = handle;
+        const file = await handle.getFile();
+        const text = await file.text();
+        loadYaml(text, file.name);
+      } catch(e) {
+        if (e.name !== 'AbortError') alert('Could not open file: ' + e.message);
+      }
+    } else {
+      document.getElementById('file-input').click();
+    }
+  });
+
+  // Fallback <input> for Firefox / Safari
+  document.getElementById('file-input').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    fileHandle = null; // no handle available via <input>
+    const reader = new FileReader();
+    reader.onload = ev => loadYaml(ev.target.result, file.name);
+    reader.readAsText(file);
+    this.value = '';
+  });
+
+  // Drop zone — no file handle available from drag-and-drop
+  const dropZone = document.getElementById('drop-zone');
+  ['dragenter','dragover'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.add('dragover'); }));
+  ['dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.remove('dragover'); }));
+  dropZone.addEventListener('drop', e => {
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    fileHandle = null;
+    const reader = new FileReader();
+    reader.onload = ev => loadYaml(ev.target.result, file.name);
+    reader.readAsText(file);
+  });
+
+  /* Auto-load: try fetch first, then check cache */
+  fetch('waypoint.yaml')
+    .then(r => { if (!r.ok) throw new Error(); return r.text(); })
+    .then(text => loadYaml(text, 'waypoint.yaml'))
+    .catch(() => checkCache());
+
+  function loadYaml(text, filename) {
+    try {
+      yamlData = jsyaml.load(text);
+      loadedFilename = filename;
+      setUnsaved(false);
+      localStorage.removeItem(CACHE_KEY);
+      showDashboard();
+    } catch(e) { alert('Could not parse YAML: ' + e.message); }
+  }
+
+  function checkCache() {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (!cached) return;
+    try {
+      const session = JSON.parse(cached);
+      yamlData = session.data;
+      loadedFilename = session.filename || 'waypoint.yaml';
+      showDashboard();
+      const d = new Date(session.savedAt);
+      document.getElementById('restore-meta').textContent =
+        'Last edited ' + d.toLocaleDateString() + ' at ' + d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      document.getElementById('restore-banner').classList.add('visible');
+      setUnsaved(true);
+    } catch(e) { localStorage.removeItem(CACHE_KEY); }
+  }
+
+  function showDashboard() {
+    document.getElementById('upload-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    document.getElementById('btn-download').classList.add('visible');
+    const fs = document.getElementById('file-status');
+    fs.classList.add('loaded');
+    document.getElementById('file-status-text').textContent = loadedFilename;
+    renderDashboard();
+  }
+
+  /* ── Restore / discard ── */
+  document.getElementById('btn-restore').addEventListener('click', () => {
+    document.getElementById('restore-banner').classList.remove('visible');
+  });
+
+  document.getElementById('btn-discard').addEventListener('click', () => {
+    localStorage.removeItem(CACHE_KEY);
+    document.getElementById('restore-banner').classList.remove('visible');
+    yamlData = null;
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('upload-screen').style.display = 'flex';
+    document.getElementById('btn-download').classList.remove('visible');
+    const fs = document.getElementById('file-status');
+    fs.classList.remove('loaded');
+    document.getElementById('file-status-text').textContent = 'No file loaded';
+    setUnsaved(false);
+  });
+
+  /* ── Unsaved state ── */
+  function setUnsaved(val) {
+    hasUnsaved = val;
+    document.getElementById('unsaved-pill').classList.toggle('visible', val);
+    document.getElementById('btn-download').classList.toggle('has-changes', val);
+  }
+
+  function markChanged() {
+    setUnsaved(true);
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({
+        data: yamlData, filename: loadedFilename, savedAt: new Date().toISOString()
+      }));
+    } catch(e) {}
+  }
+
+  /* ── Download / Save ── */
+  document.getElementById('btn-download').addEventListener('click', async () => {
+    if (!yamlData) return;
+    const out = jsyaml.dump(yamlData, { lineWidth: 120 });
+
+    // Path A: File System Access API — write back to original file in place
+    if (fileHandle) {
+      try {
+        const writable = await fileHandle.createWritable();
+        await writable.write(out);
+        await writable.close();
+        setUnsaved(false);
+        localStorage.removeItem(CACHE_KEY);
+        showToast('Saved to ' + loadedFilename, false);
+        return;
+      } catch(e) {
+        if (e.name === 'AbortError') return; // user cancelled the permission prompt
+        // Permission denied or other error — fall through to blob download
+        fileHandle = null;
+      }
+    }
+
+    // Path B: prompt for save location via showSaveFilePicker (Chrome/Edge, no handle yet)
+    if (supportsFileSystemAccess) {
+      try {
+        const handle = await window.showSaveFilePicker({
+          suggestedName: loadedFilename,
+          types: [{ description: 'YAML files', accept: { 'text/yaml': ['.yaml', '.yml'] } }]
+        });
+        fileHandle = handle; // retain for future saves
+        const writable = await handle.createWritable();
+        await writable.write(out);
+        await writable.close();
+        setUnsaved(false);
+        localStorage.removeItem(CACHE_KEY);
+        showToast('Saved to ' + handle.name, false);
+        return;
+      } catch(e) {
+        if (e.name === 'AbortError') return; // user cancelled — do nothing
+        // Any other error falls through to blob download
+      }
+    }
+
+    // Path C: standard blob download (Firefox, Safari, auto-loaded files)
+    const blob = new Blob([out], { type: 'text/yaml' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = loadedFilename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    setUnsaved(false);
+    localStorage.removeItem(CACHE_KEY);
+    showToast('Downloaded — replace your original file to apply changes', false);
+  });
+
+  /* ── Toast ── */
+  function showToast(msg, showUndo) {
+    clearTimeout(toastTimer);
+    document.getElementById('toast-msg').textContent = msg;
+    document.getElementById('toast-undo').style.display = showUndo ? 'inline' : 'none';
+    document.getElementById('toast').classList.add('visible');
+    toastTimer = setTimeout(hideToast, 5000);
+  }
+  function hideToast() {
+    document.getElementById('toast').classList.remove('visible');
+    undoSnapshot = null;
+  }
+
+  document.getElementById('toast-undo').addEventListener('click', () => {
+    if (!undoSnapshot) return;
+    const { si, mi, modi, prevStatus, prevStarted, prevCompleted } = undoSnapshot;
+    const mod = yamlData.subjects[si].milestones[mi].modules[modi];
+    mod.status         = prevStatus;
+    mod.started_date   = prevStarted   || null;
+    mod.completed_date = prevCompleted || null;
+    undoSnapshot = null;
+    hideToast();
+    markChanged();
+    const openState = captureOpenState();
+    renderDashboard();
+    restoreOpenState(openState);
+    showToast('Change undone', false);
+  });
+
+  /* ── Status change ── */
+  function today() { return new Date().toISOString().split('T')[0]; }
+
+  function changeStatus(si, mi, modi, newStatus) {
+    const mod = yamlData.subjects[si].milestones[mi].modules[modi];
+    undoSnapshot = { si, mi, modi, prevStatus: mod.status, prevStarted: mod.started_date, prevCompleted: mod.completed_date };
+    mod.status = newStatus;
+    if (newStatus === 'in_progress') {
+      if (!mod.started_date) mod.started_date = today();
+      mod.completed_date = null;
+    } else if (newStatus === 'complete') {
+      if (!mod.started_date) mod.started_date = today();
+      mod.completed_date = today();
+    } else {
+      mod.started_date   = null;
+      mod.completed_date = null;
+    }
+    markChanged();
+    const openState = captureOpenState();
+    renderDashboard();
+    restoreOpenState(openState);
+    showToast('Status updated', true);
+  }
+
+  /* ── Dropdown ── */
+  function toggleDropdown(id, event) {
+    event.stopPropagation();
+    if (openDropdownId && openDropdownId !== id) {
+      const prev = document.getElementById(openDropdownId);
+      if (prev) prev.classList.remove('open');
+    }
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('open');
+    openDropdownId = el.classList.contains('open') ? id : null;
+  }
+
+  function selectStatus(si, mi, modi, newStatus, dropdownId, event) {
+    event.stopPropagation();
+    const el = document.getElementById(dropdownId);
+    if (el) el.classList.remove('open');
+    openDropdownId = null;
+    changeStatus(si, mi, modi, newStatus);
+  }
+
+  document.addEventListener('click', () => {
+    if (openDropdownId) {
+      const el = document.getElementById(openDropdownId);
+      if (el) el.classList.remove('open');
+      openDropdownId = null;
+    }
+  });
+
+  /* ── Helpers ── */
+  function countAll(subjects) {
+    let total = 0, complete = 0, in_progress = 0, skipped = 0, not_started = 0;
+    (subjects || []).forEach(s => (s.milestones || []).forEach(m => (m.modules || []).forEach(mod => {
+      total++;
+      const st = mod.status || 'not_started';
+      if (st === 'complete')    complete++;
+      if (st === 'in_progress') in_progress++;
+      if (st === 'skipped')     skipped++;
+      if (st === 'not_started') not_started++;
+    })));
+    return { total, complete, in_progress, skipped, not_started };
+  }
+
+  function pctComplete(items) {
+    let total = 0, complete = 0;
+    (items || []).forEach(mod => { total++; if ((mod.status||'not_started') === 'complete') complete++; });
+    return total > 0 ? Math.round((complete / total) * 100) : 0;
+  }
+
+  function subjectPct(s) {
+    const mods = [];
+    (s.milestones||[]).forEach(m => (m.modules||[]).forEach(mod => mods.push(mod)));
+    return pctComplete(mods);
+  }
+
+  function badgeHtml(status, si, mi, modi) {
+    const s = status || 'not_started';
+    const ddId = `dd-${si}-${mi}-${modi}`;
+    const items = ['not_started','in_progress','complete','skipped'].map(opt => `
+      <div class="dropdown-item ${s===opt?'current':''}"
+           onclick="selectStatus(${si},${mi},${modi},'${opt}','${ddId}',event)">
+        <div class="dropdown-item-left">
+          <span class="badge badge-${opt}" style="font-size:11px;padding:3px 9px;cursor:default;">
+            <i class="ti ${STATUS_ICONS[opt]}" aria-hidden="true"></i>${STATUS_LABELS[opt]}
+          </span>
+          <span class="dropdown-item-desc">${STATUS_DESCS[opt]}</span>
+        </div>
+        ${s===opt ? '<i class="ti ti-check dropdown-check" aria-hidden="true"></i>' : ''}
+      </div>`).join('');
+    return `<div class="badge-wrapper">
+      <span class="badge badge-${s}" onclick="toggleDropdown('${ddId}',event)" role="button" aria-haspopup="true">
+        <i class="ti ${STATUS_ICONS[s]}" aria-hidden="true"></i>${STATUS_LABELS[s]}
+      </span>
+      <div class="status-dropdown" id="${ddId}">
+        <div class="dropdown-header">Set status</div>
+        ${items}
+      </div>
+    </div>`;
+  }
+
+  function diffChip(diff) {
+    if (!diff) return '';
+    return `<span class="diff-chip diff-${diff}">${diff.charAt(0).toUpperCase()+diff.slice(1)}</span>`;
+  }
+
+  function typeChip(type) {
+    if (!type) return '';
+    return `<span class="type-chip"><i class="ti ${TYPE_ICONS[type]||'ti-file'}" aria-hidden="true" style="font-size:12px;"></i>${type.charAt(0).toUpperCase()+type.slice(1)}</span>`;
+  }
+
+  function resourceLinks(resources) {
+    if (!resources||!resources.length) return '';
+    return resources.map(r => {
+      const isExt = r.type === 'external';
+      return `<a class="resource-link" href="${isExt?(r.url||'#'):(r.path||'#')}"
+                 target="${isExt?'_blank':'_self'}" rel="noopener">
+        <i class="ti ${isExt?'ti-external-link':'ti-file-text'}" aria-hidden="true"></i>${r.label||r.type}
+      </a>`;
+    }).join('');
+  }
+
+  /* ── Render ── */
+  function renderDashboard() {
+    const subjects = yamlData.subjects || [];
+    const counts   = countAll(subjects);
+    const pct      = counts.total > 0 ? Math.round((counts.complete / counts.total) * 100) : 0;
+
+    document.getElementById('summary-bar').innerHTML = `
+      <div class="stat-card"><div class="stat-label">Total</div><div class="stat-value">${counts.total}</div></div>
+      <div class="stat-card accent-amber"><div class="stat-label">Complete</div><div class="stat-value">${counts.complete}</div></div>
+      <div class="stat-card accent-teal"><div class="stat-label">In progress</div><div class="stat-value">${counts.in_progress}</div></div>
+      <div class="stat-card"><div class="stat-label">Not started</div><div class="stat-value">${counts.not_started}</div></div>
+      <div class="stat-card accent-violet"><div class="stat-label">Skipped</div><div class="stat-value">${counts.skipped}</div></div>`;
+
+    document.getElementById('overall-pct').textContent = pct + '%';
+    setTimeout(() => { document.getElementById('overall-fill').style.width = pct + '%'; }, 80);
+
+    /* Active strip */
+    const active = [];
+    subjects.forEach(s => (s.milestones||[]).forEach(m => (m.modules||[]).forEach(mod => {
+      if ((mod.status||'') === 'in_progress') active.push({ subject: s.title, milestone: m.title, mod });
+    })));
+    const activeSection = document.getElementById('active-section');
+    if (active.length > 0) {
+      activeSection.style.display = 'block';
+      document.getElementById('active-count').textContent = active.length;
+      document.getElementById('active-strip').innerHTML = active.map(({ subject, milestone, mod }) => `
+        <div class="active-card">
+          <div class="active-card-subject">${subject} &rsaquo; ${milestone}</div>
+          <div class="active-card-title">${mod.title}</div>
+          <div class="active-card-meta">
+            ${mod.estimated_time ? `<span class="chip"><i class="ti ti-clock" aria-hidden="true" style="font-size:11px;"></i>${mod.estimated_time}</span>` : ''}
+            ${diffChip(mod.difficulty)}${typeChip(mod.type)}
+          </div>
+        </div>`).join('');
+    } else {
+      activeSection.style.display = 'none';
+    }
+
+    /* Subjects */
+    document.getElementById('subjects-list').innerHTML = subjects.map((s, si) => {
+      const spct = subjectPct(s);
+      const allMods = [];
+      (s.milestones||[]).forEach(m => (m.modules||[]).forEach(mod => allMods.push(mod)));
+
+      const milestones = (s.milestones||[]).map((m, mi) => {
+        const mpct = pctComplete(m.modules||[]);
+        const modules = (m.modules||[]).map((mod, modi) => {
+          return `<div class="module-row">
+            <div class="module-left">
+              <span class="module-title">${mod.title}</span>
+              <div class="module-chips">
+                ${typeChip(mod.type)}${diffChip(mod.difficulty)}
+                ${mod.estimated_time ? `<span class="type-chip"><i class="ti ti-clock" aria-hidden="true" style="font-size:11px;"></i>${mod.estimated_time}</span>` : ''}
+                ${mod.started_date   ? `<span class="module-dates">Started ${mod.started_date}</span>` : ''}
+                ${mod.completed_date ? `<span class="module-dates">Done ${mod.completed_date}</span>`  : ''}
+              </div>
+            </div>
+            <div class="module-right">
+              <div class="module-links">${resourceLinks(mod.resources)}</div>
+              ${badgeHtml(mod.status, si, mi, modi)}
+            </div>
+          </div>`;
+        }).join('');
+
+        return `<div class="milestone-block" id="ms-${si}-${mi}">
+          <div class="milestone-header" onclick="toggleMilestone('ms-${si}-${mi}')">
+            <div>
+              <div class="milestone-title-row">
+                <span class="milestone-order">${m.order||mi+1}</span>
+                <span class="milestone-title">${m.title}</span>
+              </div>
+              ${m.description ? `<div class="milestone-desc">${m.description}</div>` : ''}
+            </div>
+            <div class="milestone-right">
+              ${m.estimated_time ? `<span class="chip"><i class="ti ti-clock" aria-hidden="true" style="font-size:11px;"></i>${m.estimated_time}</span>` : ''}
+              <span class="milestone-pct">${mpct}%</span>
+              <div class="milestone-track"><div class="milestone-fill" style="width:${mpct}%"></div></div>
+              <i class="ti ti-chevron-down milestone-chevron" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="modules-wrap">${modules}</div>
+        </div>`;
+      }).join('');
+
+      return `<div class="subject-block" id="subj-${si}">
+        <div class="subject-header" onclick="toggleSubject('subj-${si}')">
+          <div class="subject-header-left">
+            <span class="subject-title">${s.title}</span>
+            ${s.description ? `<span class="subject-desc">${s.description}</span>` : ''}
+          </div>
+          <div class="subject-header-right">
+            <div class="subject-meta-chips">
+              ${s.estimated_time ? `<span class="chip"><i class="ti ti-clock" aria-hidden="true" style="font-size:11px;"></i>${s.estimated_time}</span>` : ''}
+              <span class="chip"><i class="ti ti-layers" aria-hidden="true" style="font-size:11px;"></i>${(s.milestones||[]).length} milestones</span>
+              <span class="chip">${allMods.length} modules</span>
+            </div>
+            <span class="subject-pct">${spct}%</span>
+            <div class="subject-progress-track">
+              <div class="subject-progress-fill" style="width:${spct}%"></div>
+            </div>
+            <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="milestones-wrap">${milestones}</div>
+      </div>`;
+    }).join('');
+  }
+
+  /* ── Open state persistence ── */
+  function captureOpenState() {
+    const state = { subjects: {}, milestones: {} };
+    document.querySelectorAll('.subject-block').forEach(el => {
+      if (el.classList.contains('open')) state.subjects[el.id] = true;
+    });
+    document.querySelectorAll('.milestone-block').forEach(el => {
+      if (el.classList.contains('open')) state.milestones[el.id] = true;
+    });
+    return state;
+  }
+
+  function restoreOpenState(state) {
+    Object.keys(state.subjects).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('open');
+    });
+    Object.keys(state.milestones).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('open');
+    });
+  }
+
+  function toggleSubject(id)   { document.getElementById(id).classList.toggle('open'); }
+  function toggleMilestone(id) { document.getElementById(id).classList.toggle('open'); }
+</script>
+</body>
+</html>
