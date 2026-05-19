@@ -1,19 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 120" width="640" height="190" aria-label="Waypoint — your learning, mapped">
-  <title>Waypoint — your learning, mapped</title>
+<svg width="280" viewBox="0 0 420 72">
   <defs>
     <style>
-      @import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&amp;display=swap);
+      @import url(https://googleapis.com);.logo-text{font-family:&quot;Ubuntu&quot;,sans-serif}
     </style>
   </defs>
-  <path fill="#1d9e75" d="m112 23 32 32-32 32-32-32z"/>
-  <path fill="#0f6e56" d="m112 31 24 24-24 24-24-24z"/>
-  <circle cx="112" cy="56" r="9.5" fill="#fdfcf9"/>
-  <circle cx="112" cy="56" r="4.5" fill="#1d9e75"/>
-  <rect x="107" y="87" width="10" height="13" rx="1.5" fill="#1d9e75"/>
-  <path fill="#1d9e75" d="M103 98h18l-9 12z"/>
-  <text y="67" font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif" font-size="36">
-    <tspan x="155" font-weight="500" fill="#085041">way</tspan><tspan font-weight="300" fill="#1d9e75">point</tspan>
-  </text>
-  <path stroke="#d3d1c7" d="M330 35v40"/>
-  <text x="348" y="60" style="font-family:&quot;Ubuntu&quot;,&quot;Segoe UI&quot;,system-ui,sans-serif;font-weight:300;font-size:18px;fill:#888780">your learning, mapped</text>
+  <title>Waypoint Logo - Primary - Light Background</title>
+  <path fill="#1d9e75" d="m30 4 24 24-24 24L6 28z"/>
+  <path fill="#0f6e56" d="m30 10 18 18-18 18-18-18z"/>
+  <circle cx="30" cy="28" r="7"/>
+  <circle cx="30" cy="28" r="3.5" fill="#1d9e75"/>
+  <rect x="26" y="48" width="8" height="10" rx="1" fill="#1d9e75"/>
+  <path fill="#1d9e75" d="M22 56h16l-8 8z"/>
+  <text x="70" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="500" fill="#085041">way</text>
+  <text x="125" y="38" class="logo-text" font-family="Ubuntu, sans-serif" font-size="30" font-weight="300" fill="#1d9e75">point</text>
+  <path stroke="#d3d1c7" d="M210 09v40"/>
+  <text x="225" y="33" style="font-family:&quot;Ubuntu&quot;,&quot;Segoe UI&quot;,system-ui,sans-serif;font-weight:300;font-size:18px;fill:#888780">your learning, mapped</text>
 </svg>
