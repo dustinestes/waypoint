@@ -22,8 +22,8 @@ furnished to do so, subject to the following conditions:
    All other visual elements — including but not limited to colors, logos,
    typography, branding, and layout — may be freely modified or replaced.
 
-   The required footer attribution reads:
-     "Powered by Waypoint — github.com/dustinestes/waypoint"
+   The required footer element displays the following attribution:
+     waypoint — your learning, mapped — github.com/dustinestes/waypoint
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
