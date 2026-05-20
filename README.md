@@ -16,6 +16,7 @@
 ![Version](https://img.shields.io/badge/version-v1.0.0-1D9E75?style=flat-square&labelColor=085041)
 ![Build Step](https://img.shields.io/badge/build%20step-none-1D9E75?style=flat-square&labelColor=085041)
 ![Internet Required](https://img.shields.io/badge/internet-required-1D9E75?style=flat-square&labelColor=085041)
+[![Live Demo](https://img.shields.io/badge/live%20demo-try%20it%20now-EF9F27?style=flat-square&labelColor=412402)](https://dustinestes.github.io/waypoint/)
 
 <br/>
 
@@ -166,7 +167,9 @@ Open `waypoint.html` in your browser to see a visual summary of your roadmap —
 
 ## Where To Start
 
-3 steps, it really is that EASY! Efficiency and organization mean you can maximize your time spent focusing on the road ahead.
+Not ready to clone? **[Try the live demo](https://dustinestes.github.io/waypoint/)** — an interactive waypoint you can explore right in your browser, no setup required.
+
+Otherwise, 3 steps and you're tracking:
 
 1. **Fork or clone** this repository
    ```bash
