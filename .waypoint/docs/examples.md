@@ -591,6 +591,183 @@ subjects:
                 url: "https://learn.microsoft.com/en-us/users/your-username"
 ```
 
+---
+
+## Product Onboarding — Guided Learning for Users
+
+**Scenario:** A product team that wants to help new users learn their product quickly and confidently. Rather than pointing users to scattered documentation, a support portal, and a YouTube channel and hoping they find what they need, the team authors a single waypoint that maps the entire onboarding journey — from "what is this?" through core features to advanced configuration.
+
+Users open the waypoint via GitHub Pages, see their full onboarding path at a glance, and click through to the relevant docs, videos, and guides for each step. They can track what they've read, what they're working through, and what's left — and download their progress file to pick up where they left off.
+
+This is the pattern behind the **[waypoint live demo](https://dustinestes.github.io/waypoint/)** itself — a waypoint about waypoint, authored by the product team and hosted on GitHub Pages for anyone to explore interactively.
+
+### Why waypoint fits this use case
+
+- **One structured path** replaces a scattered wiki, a pinned Slack thread, and a "start here" doc that nobody reads
+- **Status tracking** lets users mark what they've completed, creating a personal record of their onboarding progress
+- **Resource links** connect directly to official docs, videos, and internal guides — no context switching
+- **GitHub Pages hosting** means no login, no account, no app to install — one link and they're in
+- **YAML authoring** gives the product team full control over structure and content, versioned alongside the product itself
+
+### Folder Structure
+
+```
+product-onboarding/
+├── waypoint.yaml       # The onboarding learning path
+└── waypoint.html       # waypoint — hosted on GitHub Pages
+```
+
+All resources are external links — no local files needed. The repo is as minimal as possible so the team can focus entirely on content.
+
+### waypoint.yaml
+
+```yaml
+subjects:
+
+  - id: what-is-product
+    title: "What is [Product]?"
+    description: "The concept, the use cases, and whether it fits your needs"
+    estimated_time: "20 minutes"
+
+    milestones:
+
+      - id: the-basics
+        title: "The Basics"
+        order: 1
+        estimated_time: "20 minutes"
+
+        modules:
+
+          - id: overview
+            title: "Overview"
+            order: 1
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://yourproduct.com/docs/overview"
+
+          - id: core-concepts
+            title: "Core Concepts"
+            order: 2
+            type: reading
+            difficulty: beginner
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://yourproduct.com/docs/concepts"
+              - type: external
+                label: "Video"
+                url: "https://youtube.com/your-intro-video"
+
+          - id: quick-start
+            title: "Quick Start"
+            order: 3
+            type: mixed
+            difficulty: beginner
+            estimated_time: "15 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Guide"
+                url: "https://yourproduct.com/docs/quickstart"
+
+  - id: core-features
+    title: "Core Features"
+    description: "The features your team will use every day"
+    estimated_time: "1 hour"
+
+    milestones:
+
+      - id: feature-one
+        title: "[Feature One]"
+        order: 1
+        estimated_time: "30 minutes"
+
+        modules:
+
+          - id: feature-one-intro
+            title: "Introduction to [Feature One]"
+            order: 1
+            type: reading
+            difficulty: beginner
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://yourproduct.com/docs/feature-one"
+
+          - id: feature-one-walkthrough
+            title: "[Feature One] Walkthrough"
+            order: 2
+            type: video
+            difficulty: beginner
+            estimated_time: "20 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Video"
+                url: "https://youtube.com/feature-one-walkthrough"
+
+  - id: advanced-configuration
+    title: "Advanced Configuration"
+    description: "For power users and teams with specific requirements"
+    estimated_time: "45 minutes"
+
+    milestones:
+
+      - id: configuration
+        title: "Configuration"
+        order: 1
+        estimated_time: "45 minutes"
+
+        modules:
+
+          - id: config-reference
+            title: "Configuration Reference"
+            order: 1
+            type: reading
+            difficulty: intermediate
+            estimated_time: "15 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://yourproduct.com/docs/configuration"
+
+          - id: integrations
+            title: "Integrations"
+            order: 2
+            type: reading
+            difficulty: intermediate
+            estimated_time: "30 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://yourproduct.com/docs/integrations"
+```
+
 <br>
 
 ---
