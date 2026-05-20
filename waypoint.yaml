@@ -1,166 +1,437 @@
 # =============================================================================
-# waypoint.yaml
+# waypoint.yaml — Live Demo
 # =============================================================================
-# Learning path configuration for Waypoint.
-# Edit this file to define and track progress across subjects, milestones,
-# and modules. All fields marked (optional) can be left blank or omitted.
+# Welcome to waypoint! This is a live, interactive demo — a learning path
+# about waypoint itself. Click any status badge to update your progress.
 #
-# ENUMS — only these exact values are valid:
-#   status:          not_started | in_progress | complete | skipped
-#   difficulty:      beginner | intermediate | advanced
-#   type:            reading | video | lab | quiz | mixed
-#   resource.type:   notes | lab | script | external
-#
-# DATES — use ISO 8601 format: YYYY-MM-DD (e.g. 2025-03-12)
-# =============================================================================
-
-waypoint:
-  version: "1.0"
-  created: "2025-01-01"           # Date this file was first created
-  author: "Your Name"             # Learner or educator who owns this file
-
-# =============================================================================
-# SUBJECTS
-# Top-level learning areas. Each subject contains one or more milestones.
+# Ready to build your own? Fork the repo and replace this file:
+# https://github.com/dustinestes/waypoint
 # =============================================================================
 
 subjects:
 
-  - id: kubernetes                 # Unique slug — never change once set
-    title: "Kubernetes"
-    description: "Container orchestration from core concepts to production patterns"
-    icon:                          # (optional) relative path from repo root e.g. assets/k8s.png
-    estimated_time: "40 hours"     # (optional) free text — "40 hours", "6 weeks", "3 days", etc.
+  # ---------------------------------------------------------------------------
+  # SUBJECT 1 — What is waypoint?
+  # For first-time visitors who want to understand what waypoint is before
+  # committing to using it.
+  # ---------------------------------------------------------------------------
 
-    # -------------------------------------------------------------------------
-    # MILESTONES
-    # Logical groupings of modules within a subject.
-    # -------------------------------------------------------------------------
+  - id: what-is-waypoint
+    title: "What is waypoint?"
+    description: "The concept, the philosophy, and whether waypoint fits your learning style"
+    estimated_time: "15 minutes"
 
     milestones:
 
-      - id: foundations            # Unique slug within this subject
-        title: "Foundations"
-        description: "Core concepts and architecture"
-        order: 1                   # Controls display order in waypoint
-        estimated_time: "8 hours"  # (optional)
-
-        # ---------------------------------------------------------------------
-        # MODULES
-        # Individual learning units within a milestone.
-        # ---------------------------------------------------------------------
+      - id: the-concept
+        title: "The Concept"
+        description: "What waypoint is, how it works, and who it is built for"
+        order: 1
+        estimated_time: "15 minutes"
 
         modules:
 
-          - id: what-is-kubernetes       # Unique slug within this milestone
-            title: "What is Kubernetes?"
-            order: 1                     # Controls display order in waypoint
-            difficulty: beginner         # (optional) beginner | intermediate | advanced
-            type: reading                # (optional) reading | video | lab | quiz | mixed
-            estimated_time: "1 hour"     # (optional)
-            status: complete             # not_started | in_progress | complete | skipped
-            started_date: "2025-03-10"   # (optional) ISO 8601 — fill in when you begin
-            completed_date: "2025-03-12" # (optional) ISO 8601 — fill in when done
-            resources:
-              - type: external
-                label: "Docs"
-                url: "https://kubernetes.io/docs/concepts/overview/"
-              - type: notes              # notes | lab | script | external
-                label: "Notes"
-                path: "notes/kubernetes/foundations/what-is-kubernetes.md"
-
-          - id: cluster-architecture
-            title: "Cluster architecture"
-            order: 2
-            difficulty: intermediate
-            type: mixed
-            estimated_time: "2 hours"
-            status: in_progress
-            started_date: "2025-03-13"
-            completed_date:
-            resources:
-              - type: external
-                label: "Docs"
-                url: "https://kubernetes.io/docs/concepts/architecture/"
-              - type: lab
-                label: "Lab"
-                path: "labs/kubernetes/foundations/cluster-setup.sh"
-              - type: notes
-                label: "Notes"
-                path: "notes/kubernetes/foundations/cluster-architecture.md"
-
-          - id: kubectl-basics
-            title: "kubectl basics"
-            order: 3
-            difficulty: beginner
-            type: reading
-            estimated_time:              # (optional — not provided for this module)
-            status: not_started
-            started_date:
-            completed_date:
-            resources:
-              - type: external
-                label: "Docs"
-                url: "https://kubernetes.io/docs/reference/kubectl/"
-              - type: external
-                label: "Cheatsheet"
-                url: "https://kubernetes.io/docs/reference/kubectl/cheatsheet/"
-
-      - id: workloads
-        title: "Workloads"
-        description: "Pods, deployments, services, and beyond"
-        order: 2
-        estimated_time: "12 hours"
-
-        modules:
-
-          - id: pods
-            title: "Pods"
+          - id: overview
+            title: "Overview"
             order: 1
+            type: reading
             difficulty: beginner
-            type: reading
-            estimated_time: "1 hour"
+            estimated_time: "5 minutes"
             status: not_started
             started_date:
             completed_date:
             resources:
               - type: external
                 label: "Docs"
-                url: "https://kubernetes.io/docs/concepts/workloads/pods/"
-              - type: notes
-                label: "Notes"
-                path: "notes/kubernetes/workloads/pods.md"
+                url: "https://github.com/dustinestes/waypoint#readme"
 
-          - id: deployments
-            title: "Deployments"
+          - id: how-it-works
+            title: "How It Works"
             order: 2
-            difficulty: intermediate
-            type: lab
-            estimated_time: "2 hours"
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
             status: not_started
             started_date:
             completed_date:
             resources:
-              - type: lab
-                label: "Lab"
-                path: "labs/kubernetes/workloads/rolling-update.sh"
-              - type: notes
-                label: "Notes"
-                path: "notes/kubernetes/workloads/deployments.md"
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint#how-it-works"
 
-          - id: helm-basics
-            title: "Helm basics"
+          - id: who-its-for
+            title: "Who It's For"
             order: 3
-            difficulty: intermediate
             type: reading
-            estimated_time: "3 hours"
-            status: skipped
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
             started_date:
             completed_date:
             resources:
-              - type: notes
-                label: "Notes"
-                path: "notes/kubernetes/workloads/helm-basics.md"
               - type: external
                 label: "Docs"
-                url: "https://helm.sh/docs/"
+                url: "https://github.com/dustinestes/waypoint#who-its-for"
+
+  # ---------------------------------------------------------------------------
+  # SUBJECT 2 — Using waypoint
+  # For users who are ready to build their own waypoint or want a reference
+  # for standard day-to-day usage.
+  # ---------------------------------------------------------------------------
+
+  - id: using-waypoint
+    title: "Using waypoint"
+    description: "Everything you need to get set up, author your YAML, and get the most out of the interface"
+    estimated_time: "1.5 hours"
+
+    milestones:
+
+      - id: getting-started
+        title: "Getting Started"
+        description: "Get waypoint set up and understand how it is organized"
+        order: 1
+        estimated_time: "25 minutes"
+
+        modules:
+
+          - id: fork-or-clone
+            title: "Fork or Clone the Repo"
+            order: 1
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint#where-to-start"
+
+          - id: project-structure
+            title: "Project Structure"
+            order: 2
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/project-structure.md"
+
+          - id: full-walkthrough
+            title: "Full Walkthrough"
+            order: 3
+            type: reading
+            difficulty: beginner
+            estimated_time: "15 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/getting-started.md"
+
+      - id: authoring-your-yaml
+        title: "Authoring Your YAML"
+        description: "Define your learning path in a single structured file"
+        order: 2
+        estimated_time: "30 minutes"
+
+        modules:
+
+          - id: subjects-milestones-modules
+            title: "Subjects, Milestones, and Modules"
+            order: 1
+            type: reading
+            difficulty: beginner
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/yaml-schema.md"
+
+          - id: statuses-and-dates
+            title: "Statuses and Dates"
+            order: 2
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/yaml-schema.md#statuses"
+
+          - id: linking-resources
+            title: "Linking Your Materials with Resources"
+            order: 3
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/yaml-schema.md#resources"
+
+          - id: real-world-examples
+            title: "Real-World Examples"
+            order: 4
+            type: reading
+            difficulty: beginner
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/examples.md"
+
+      - id: the-interface
+        title: "The Interface"
+        description: "Load your file, track your progress, and save your changes"
+        order: 3
+        estimated_time: "25 minutes"
+
+        modules:
+
+          - id: loading-a-file
+            title: "Loading a YAML File"
+            order: 1
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/waypoint.md#opening-waypoint"
+
+          - id: tracking-progress
+            title: "Tracking Progress with Status Badges"
+            order: 2
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/waypoint.md#editing-status"
+
+          - id: saving-changes
+            title: "Saving Your Changes"
+            order: 3
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/waypoint.md#saving-changes"
+
+          - id: undo-and-sessions
+            title: "Undo and Session Persistence"
+            order: 4
+            type: reading
+            difficulty: beginner
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Undo"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/waypoint.md#undo"
+              - type: external
+                label: "Session Persistence"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/waypoint.md#session-persistence"
+
+          - id: themes
+            title: "Themes"
+            order: 5
+            type: reading
+            difficulty: beginner
+            estimated_time: "3 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/waypoint.md#themes"
+
+  # ---------------------------------------------------------------------------
+  # SUBJECT 3 — Customizing waypoint
+  # For advanced users, teams, and organizations who want to adapt waypoint
+  # to their own visual style or integrate it into a larger context.
+  # ---------------------------------------------------------------------------
+
+  - id: customizing-waypoint
+    title: "Customizing waypoint"
+    description: "Adapt the interface to your own visual style — colors, typography, navbar, and themes"
+    estimated_time: "45 minutes"
+
+    milestones:
+
+      - id: making-it-yours
+        title: "Making It Yours"
+        description: "Every customizable element in waypoint.html and where to find it"
+        order: 1
+        estimated_time: "45 minutes"
+
+        modules:
+
+          - id: color-palette
+            title: "Color Palette"
+            order: 1
+            type: reading
+            difficulty: intermediate
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/customization.md#color-palette"
+
+          - id: typography
+            title: "Typography and Fonts"
+            order: 2
+            type: reading
+            difficulty: intermediate
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/customization.md#typography"
+
+          - id: page-layout
+            title: "Page Layout and Width"
+            order: 3
+            type: reading
+            difficulty: intermediate
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/customization.md#page-width"
+
+          - id: navbar
+            title: "The Navbar"
+            order: 4
+            type: reading
+            difficulty: intermediate
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/customization.md#navbar"
+
+          - id: themes-advanced
+            title: "Themes — Modifying and Adding"
+            order: 5
+            type: reading
+            difficulty: advanced
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/customization.md#themes"
+
+          - id: status-badge-colors
+            title: "Status Badge Colors"
+            order: 6
+            type: reading
+            difficulty: intermediate
+            estimated_time: "5 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://github.com/dustinestes/waypoint/blob/main/.waypoint/docs/customization.md#status-badge-colors"
+
+  # ---------------------------------------------------------------------------
+  # SUBJECT 4 — Complementary Learning
+  # Optional supporting knowledge for users who want to go deeper.
+  # Demonstrates waypoint's ability to bring together disparate learning
+  # resources into a single, organized path.
+  # ---------------------------------------------------------------------------
+
+  - id: complementary-learning
+    title: "Complementary Learning"
+    description: "Supporting concepts that will help you get more from waypoint — go as deep as you like"
+    estimated_time: "30 minutes"
+
+    milestones:
+
+      - id: yaml-fundamentals
+        title: "YAML Fundamentals"
+        description: "waypoint uses YAML to define your learning path — this milestone covers the basics"
+        order: 1
+        estimated_time: "30 minutes"
+
+        modules:
+
+          - id: what-is-yaml
+            title: "What is YAML?"
+            order: 1
+            type: reading
+            difficulty: beginner
+            estimated_time: "10 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Docs"
+                url: "https://yaml.org/"
+
+          - id: yaml-syntax
+            title: "YAML Syntax and Structure"
+            order: 2
+            type: reading
+            difficulty: beginner
+            estimated_time: "20 minutes"
+            status: not_started
+            started_date:
+            completed_date:
+            resources:
+              - type: external
+                label: "Tutorial"
+                url: "https://learnxinyminutes.com/yaml/"
