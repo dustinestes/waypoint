@@ -26,6 +26,3 @@ How was this tested? What should a reviewer check?
 - [ ] I have updated relevant documentation (README, folder READMEs, etc.)
 - [ ] The footer attribution is intact in any modified files that include it
 - [ ] No unrelated changes are included in this PR
-
----
-<sub>Powered by Waypoint — github.com/dustinestes/waypoint</sub>

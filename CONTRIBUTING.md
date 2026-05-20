@@ -1,8 +1,11 @@
-# Contributing to Waypoint
+<br><br>
+<img align="right" src=".waypoint/branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="waypoint">
+<h1>Contributing</h1>
+<br clear="both">
 
-Thanks for your interest in contributing. Waypoint is a small, focused project and contributions are welcome — whether that's a bug fix, a new feature, documentation improvements, or just opening an issue with a thoughtful idea.
+Thanks for your interest in contributing. waypoint is a small, focused project and contributions are welcome — whether that's a bug fix, a new feature, documentation improvements, or just opening an issue with a thoughtful idea.
 
----
+<br>
 
 ## Ways to Contribute
 
@@ -45,13 +48,22 @@ The dashboard (`dashboard.html`) opens directly in any modern browser. The YAML 
 
 ## Commit Messages
 
-Use clear, present-tense commit messages that describe *what* the change does:
+Use a conventional commit prefix followed by a short, present-tense description:
 
 ```
-Add multi-subject support to dashboard
-Fix status badge color for skipped modules
-Update README with getting started steps
+feat: add drag-and-drop reordering for modules
+fix: resolve status badge color for skipped modules
+docs: update README with getting started steps
+chore: remove unused CSS variables
 ```
+
+| Prefix | When to use |
+|--------|-------------|
+| `feat:` | New feature or user-facing enhancement |
+| `fix:` | Bug fix |
+| `docs:` | Documentation changes only |
+| `chore:` | Maintenance, tooling, or non-functional changes |
+| `breaking:` | Change that breaks backwards compatibility |
 
 ---
 
@@ -65,6 +77,10 @@ Per the project license, any derivative work or fork that is publicly distribute
 
 Open an issue and tag it `question`. There's no wrong question here.
 
+<br>
+
 ---
 
-<sub>Powered by Waypoint — github.com/dustinestes/waypoint</sub>
+<img align="left" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="waypoint">
+<div align="right">v1.0.0</div>
+<br clear="both">

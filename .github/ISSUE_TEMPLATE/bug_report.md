@@ -21,10 +21,7 @@ What actually happened.
 ## Environment
 - OS:
 - Browser (if dashboard-related):
-- Waypoint version / commit:
+- waypoint version / commit:
 
 ## Additional Context
 Any other details, screenshots, or YAML snippets that might help.
-
----
-<sub>Powered by Waypoint — github.com/dustinestes/waypoint</sub>

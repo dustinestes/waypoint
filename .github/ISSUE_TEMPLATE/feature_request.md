@@ -1,7 +1,7 @@
 ---
 name: Feature Request
-about: Suggest an idea or improvement for Waypoint
-labels: enhancement
+about: Suggest an idea or improvement for waypoint
+labels: feat
 ---
 
 ## Summary
@@ -18,6 +18,3 @@ Any other approaches you thought about, or workarounds you're currently using.
 
 ## Additional Context
 Mockups, examples from other tools, related issues, or anything else useful.
-
----
-<sub>Powered by Waypoint — github.com/dustinestes/waypoint</sub>
