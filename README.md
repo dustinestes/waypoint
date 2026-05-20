@@ -6,7 +6,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".waypoint/branding/banners/waypoint_banner_darkbg.png">
-  <img alt="Waypoint" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="130">
+  <img alt="waypoint" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="130">
 </picture>
 
 
@@ -15,7 +15,7 @@
 ![License](https://img.shields.io/badge/license-MIT%20%2B%20Attribution-1D9E75?style=flat-square&labelColor=085041)
 ![Version](https://img.shields.io/badge/version-v1.0.0-1D9E75?style=flat-square&labelColor=085041)
 ![Build Step](https://img.shields.io/badge/build%20step-none-1D9E75?style=flat-square&labelColor=085041)
-![Works Offline](https://img.shields.io/badge/works-offline-1D9E75?style=flat-square&labelColor=085041)
+![Internet Required](https://img.shields.io/badge/internet-required-1D9E75?style=flat-square&labelColor=085041)
 
 <br/>
 
@@ -25,7 +25,7 @@
 
 ---
 
-Waypoint is a lightweight, file-based framework for structuring and tracking self-directed learning — across any subject, platform, or learning path. Whether you're grinding through a certification, exploring a new technology, or building knowledge across multiple unrelated topics at once, Waypoint gives you a single place to define what you're learning, track where you are, and navigate what's next.
+waypoint is a lightweight, file-based framework for structuring and tracking self-directed learning. waypoint gives you a single place to define and centralize what you're learning, organize your materials, track where you are, and navigate what's next — all from a single YAML file and a local dashboard that runs in any browser.
 
 ---
 
@@ -33,11 +33,10 @@ Waypoint is a lightweight, file-based framework for structuring and tracking sel
 
 ## What It Does
 
-- **Scaffold** your learning materials — notes, docs, labs, and scripts — in a consistent, portable folder structure
-- **Define** your learning roadmap in a single YAML file: subjects, milestones, and modules
-- **Track** your progress by updating module statuses directly in YAML (`not_started`, `in_progress`, `complete`, `skipped`)
-- **Visualize** everything through a local dashboard that reads your YAML and displays progress at a glance, with direct links to your materials
-- *(Planned)* **Generate** learning plans via AI — share your repo as context and let an agent scaffold a full roadmap for any subject or certification
+- **Scaffold** a consistent folder structure for notes, docs, labs, and scripts
+- **Define** your learning roadmap in a single YAML file — subjects, milestones, and modules
+- **Track** progress by updating module statuses directly in the dashboard or the YAML file
+- **Visualize** everything through a local dashboard with direct links to your materials
 
 ---
 
@@ -45,122 +44,145 @@ Waypoint is a lightweight, file-based framework for structuring and tracking sel
 
 ## Who It's For
 
-Waypoint is built for anyone who learns outside of a single structured system — people pulling from documentation, YouTube, courses, books, labs, and blog posts all at once and trying to make sense of where they stand.
+waypoint is for anyone learning outside of a single structured platform — pulling from learning platforms, documentation, YouTube, courses, books, and labs all at once and trying to make sense of where they started and where they are going next.
 
-That includes:
 - Developers and engineers pursuing certifications or exploring new tools
 - Students and career changers mapping a path into a new field
 - Curious generalists tracking progress across multiple subjects simultaneously
 
-If your learning doesn't fit neatly into one platform's progress bar, Waypoint is for you.
+### Use Cases
+
+- Learners can curate their own waypoint files to help guide them on their educational journey
+- Educators can build a structured syllabus with self-contained docs and links to resources
+- Product owners can define a path for learning and understanding their product using a more interactive approach
+- Anyone else looking to author structured, easy-to-use, high value training paths for others to utilize
+
+> Need inspiration for how to utilize waypoint? → [`examples.md`](examples.md)
 
 ---
 
 <br/>
 
-## Project Structure
+## How It Works
+
+1. **Define your roadmap** — write a `waypoint.yaml` that outlines your subjects, milestones, and individual learning modules
+2. **Gather your materials** — collect links, write notes, set up labs, and save reference docs in the structured folder layout
+3. **Connect everything** — reference your local files and external links directly in your YAML so nothing gets lost
+4. **Track daily** — open the dashboard, update module statuses as you learn, and download your updated YAML to save changes
+
+---
+
+<br/>
+
+## What It Requires
+
+| Requirement | Notes |
+|-------------|-------|
+| Modern browser | Chrome, Firefox, Edge, or Safari |
+| Internet connection | Required to load fonts, icons, and the YAML parser from CDN |
+| Text editor | Any editor — for writing and editing `waypoint.yaml` |
+| Git | Optional — recommended for version-controlling your progress |
+
+No install, no build step, no package manager, no server.
+
+> Bundling all dependencies directly into `dashboard.html` to remove the internet requirement is planned. See [issue #17](https://github.com/dustinestes/waypoint/issues/17).
+
+---
+
+<br/>
+
+## What It's Made Of
+
+### Project Structure
 
 ```
 waypoint/
-├── .waypoint/          # Project related files, branding elements, AI tooling, and all the other "under the hood" elements
+├── .waypoint/          # Framework files — branding, AI tooling, deep docs
 ├── docs/               # Reference documentation, whitepapers, study guides
 ├── labs/               # Hands-on exercises, environment configs, lab files
-├── notes/              # Personal notes organized by subject or module
+├── notes/              # Personal notes organized by subject and module
 ├── scripts/            # Automation scripts, setup helpers, tooling
 ├── waypoint.yaml       # Your learning roadmap and progress tracker
-└── dashboard.html      # Local progress dashboard (opens in browser)
+└── dashboard.html      # Local progress dashboard — opens in any browser
 ```
 
----
+> Full structure guide → [`.waypoint/docs/project-structure.md`](.waypoint/docs/project-structure.md)
 
 <br/>
 
-## The YAML Roadmap
+### waypoint YAML
 
-Your entire learning plan lives in `waypoint.yaml`. Define subjects, break them into milestones, and list the modules within each. Update statuses as you go.
+Your entire learning plan lives in a single `waypoint.yaml`. Subjects contain milestones, milestones contain modules, and each module tracks its own status, metadata, and links to your materials. You define you journey so the file can be as high level or as granular as you need. Keep track of only what you find helpful and focus on what matters the most.
 
 ```yaml
 subjects:
 
-  - id: kubernetes                 # Unique slug — never change once set
+  - id: kubernetes
     title: "Kubernetes"
     description: "Container orchestration from core concepts to production patterns"
-    icon:                          # (optional) relative path from repo root e.g. assets/k8s.png
-    estimated_time: "40 hours"     # (optional) free text — "40 hours", "6 weeks", "3 days", etc.
-
-    # -------------------------------------------------------------------------
-    # MILESTONES
-    # Logical groupings of modules within a subject.
-    # -------------------------------------------------------------------------
+    estimated_time: "40 hours"
 
     milestones:
 
-      - id: foundations            # Unique slug within this subject
+      - id: foundations
         title: "Foundations"
-        description: "Core concepts and architecture"
-        order: 1                   # Controls display order in the dashboard
-        estimated_time: "8 hours"  # (optional)
-
-        # ---------------------------------------------------------------------
-        # MODULES
-        # Individual learning units within a milestone.
-        # ---------------------------------------------------------------------
+        estimated_time: "8 hours"
 
         modules:
 
-          - id: what-is-kubernetes       # Unique slug within this milestone
+          - id: what-is-kubernetes
             title: "What is Kubernetes?"
-            order: 1                     # Controls display order in the dashboard
-            difficulty: beginner         # (optional) beginner | intermediate | advanced
-            type: reading                # (optional) reading | video | lab | quiz | mixed
-            estimated_time: "1 hour"     # (optional)
-            status: complete             # not_started | in_progress | complete | skipped
-            started_date: "2025-03-10"   # (optional) ISO 8601 — fill in when you begin
-            completed_date: "2025-03-12" # (optional) ISO 8601 — fill in when done
+            type: reading
+            difficulty: beginner
+            estimated_time: "1 hour"
+            status: complete
             resources:
               - type: external
-                label: "Docs"
+                label: "Official Docs"
                 url: "https://kubernetes.io/docs/concepts/overview/"
-              - type: notes              # notes | lab | script | external
-                label: "Notes"
+              - type: notes
+                label: "My Notes"
                 path: "notes/kubernetes/foundations/what-is-kubernetes.md"
 ```
 
-**Statuses:** `not_started` · `in_progress` · `complete` · `skipped`
+> Full schema reference → [`.waypoint/docs/yaml-schema.md`](.waypoint/docs/yaml-schema.md)
+
+<br/>
+
+### Dashboard
+
+Open `dashboard.html` in your browser to see a visual summary of your roadmap — progress by subject and milestone, module status at a glance, and direct links to your notes and materials. No build step, no server required.
+
+<div align="center">
+  <img src=".waypoint/docs/screenshots/dashboard-overview.png" alt="Dashboard overview" width="80%">
+  <p><em>Dashboard view — subjects, milestones, and module status at a glance</em></p>
+</div>
+
+> Full dashboard guide → [`.waypoint/docs/dashboard.md`](.waypoint/docs/dashboard.md)
 
 ---
 
 <br/>
 
-## Dashboard
+## Where To Start
 
-Open `dashboard.html` in your browser to see a visual summary of your roadmap — progress by milestone, module status at a glance, and direct links to your notes and materials. No build step, no server required.
-
----
-
-<br/>
-
-## Getting Started
+3 steps, it really is that EASY! Efficiency and organization mean you can maximize your time spent focusing on the road ahead.
 
 1. **Fork or clone** this repository
    ```bash
    git clone https://github.com/dustinestes/waypoint.git my-learning
    cd my-learning
    ```
+2. **Edit `waypoint.yaml`** to define your subjects, milestones, and modules
+3. **Open `dashboard.html`** in your browser to start tracking
 
-2. **Edit `waypoint.yaml`** to define your subject, milestones, and modules
-
-3. **Add your materials** to `docs/`, `notes/`, `labs/`, and `scripts/` as you go and add links to these items in your waypoint.yaml file for easy access
-
-4. **Open `dashboard.html`** in your browser to track progress
-
-5. **Update statuses** in `waypoint.yaml` as you complete modules
+> Full walkthrough → [`.waypoint/docs/getting-started.md`](.waypoint/docs/getting-started.md)
 
 ---
 
 <br/>
 
-## Roadmap
+## What's Planned Next
 
 - **Planned and in-progress** → [GitHub Issues](https://github.com/dustinestes/waypoint/issues)
 - **Shipped by version** → [GitHub Releases](https://github.com/dustinestes/waypoint/releases)
@@ -169,23 +191,23 @@ Open `dashboard.html` in your browser to see a visual summary of your roadmap �
 
 <br/>
 
-## Contributing
+## How to Contribute
 
-Contributions, ideas, and feedback are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
-
----
-
-<br/>
-
-## License
-
-This project is licensed under the MIT License with an Attribution Condition. You are free to use, fork, and modify Waypoint for any purpose. The footer attribution must remain intact in any redistribution or derivative work. See [LICENSE](LICENSE) for full terms.
+Contributions, ideas, and feedback are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
 <br/>
 
-## Contributors
+## How It's Licensed
+
+MIT License with an Attribution Condition — free to use, fork, and modify. The footer attribution must remain intact in any redistribution or derivative work. See [LICENSE](LICENSE) for full terms.
+
+---
+
+<br/>
+
+## With Thanks To
 
 - **Dustin Estes** — creator, product design, and development
 - **[Claude](https://claude.ai) (Anthropic)** — AI development assistant
@@ -194,6 +216,6 @@ This project is licensed under the MIT License with an Attribution Condition. Yo
 
 ---
 
-<img align="left" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="Waypoint">
+<img align="left" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="waypoint">
 <div align="right">v1.0.0</div>
 <br clear="both">

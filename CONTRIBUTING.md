@@ -1,9 +1,9 @@
 <br><br>
-<img align="right" src=".waypoint/branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="Waypoint">
+<img align="right" src=".waypoint/branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="waypoint">
 <h1>Contributing</h1>
 <br clear="both">
 
-Thanks for your interest in contributing. Waypoint is a small, focused project and contributions are welcome — whether that's a bug fix, a new feature, documentation improvements, or just opening an issue with a thoughtful idea.
+Thanks for your interest in contributing. waypoint is a small, focused project and contributions are welcome — whether that's a bug fix, a new feature, documentation improvements, or just opening an issue with a thoughtful idea.
 
 <br>
 
@@ -81,6 +81,6 @@ Open an issue and tag it `question`. There's no wrong question here.
 
 ---
 
-<img align="left" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="Waypoint">
+<img align="left" src=".waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="waypoint">
 <div align="right">v1.0.0</div>
 <br clear="both">

@@ -1,5 +1,5 @@
 <br><br>
-<img align="right" src="../.waypoint/branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="Waypoint">
+<img align="right" src="../.waypoint/branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="waypoint">
 <h1>notes/</h1>
 <br clear="both">
 
@@ -34,6 +34,6 @@ Notes files are referenced from `waypoint.yaml` via the `resources:` array with 
 
 ---
 
-<img align="left" src="../.waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="Waypoint">
+<img align="left" src="../.waypoint/branding/banners/waypoint_banner_lightbg.png" height="64" alt="waypoint">
 <div align="right">v1.0.0</div>
 <br clear="both">
