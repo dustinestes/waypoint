@@ -17,7 +17,7 @@ waypoint/
 ├── notes/              # Personal notes and study summaries
 ├── scripts/            # Automation scripts and setup helpers
 ├── waypoint.yaml       # Your learning roadmap and progress tracker
-└── dashboard.html      # Local progress dashboard
+└── waypoint.html       # waypoint — opens in any browser
 ```
 
 The four content directories (`docs/`, `labs/`, `notes/`, `scripts/`) are yours to fill. They are intentionally separate from `.waypoint/` so your learning content is never mixed with framework internals.
@@ -31,7 +31,7 @@ The folder names above are a starting convention — not a requirement of the fr
 That means you are free to:
 
 - **Omit folders you don't need.** If you never write lab files, don't create a `labs/` folder. If all your resources are external links, you may not need any content folders at all.
-- **Rename folders to suit your workflow.** Nothing in the dashboard or the schema assumes a folder is called `notes/` or `labs/`.
+- **Rename folders to suit your workflow.** Nothing in waypoint or the schema assumes a folder is called `notes/` or `labs/`.
 - **Organize by subject at the root.** Rather than grouping by content type first (`notes/kubernetes/`, `notes/python/`), you might prefer to group by subject first (`kubernetes/notes/`, `python/notes/`). Both are valid — the path in the YAML just needs to match wherever the file actually lives.
 - **Create folders that don't exist here.** A `certifications/` folder for completion certificates, a `resources/` folder for downloads, a `diagrams/` folder for architecture sketches — if it helps you organize, it belongs.
 
@@ -104,7 +104,7 @@ docs/
 
 ### Linking to waypoint.yaml
 
-Use `type: external` with a local file path if you want to link a document directly from the dashboard:
+Use `type: external` with a local file path if you want to link a document directly from waypoint:
 
 ```yaml
 resources:
@@ -194,17 +194,17 @@ See [`.waypoint/README.md`](../README.md) for a full breakdown of what's inside.
 
 ## waypoint.yaml
 
-Your entire learning roadmap. Defines subjects, milestones, and modules, and tracks the status of each. This is the file you edit as you plan your learning and the dashboard reads it to render your progress.
+Your entire learning roadmap. Defines subjects, milestones, and modules, and tracks the status of each. This is the file you edit as you plan your learning and the one waypoint reads to render your progress.
 
 See [`yaml-schema.md`](yaml-schema.md) for a complete field reference.
 
 ---
 
-## dashboard.html
+## waypoint.html
 
-A single HTML file containing the complete waypoint dashboard — no dependencies, no build step. Open it directly in any modern browser. When served from the same directory as your `waypoint.yaml` (e.g. via GitHub Pages or a local server), it auto-loads your file on startup.
+A single HTML file containing the complete waypoint application — no dependencies, no build step. Open it directly in any modern browser. When served from the same directory as your YAML file (e.g. via GitHub Pages or a local server), it auto-loads on startup.
 
-See [`dashboard.md`](dashboard.md) for a full feature guide.
+See [`waypoint.md`](waypoint.md) for a full feature guide.
 
 <br>
 

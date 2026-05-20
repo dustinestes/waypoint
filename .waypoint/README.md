@@ -19,10 +19,10 @@ Internal project files for waypoint itself — branding assets, AI tooling, and 
 ├── docs/                       # Internal project documentation and reference material
 │   ├── getting-started.md      # Step-by-step walkthrough for waypoint
 │   ├── yaml-schema.md          # Complete field reference for waypoint.yaml
-│   ├── dashboard.md            # Dashboard features and usage guide
+│   ├── waypoint.md             # waypoint features and usage guide
 │   ├── project-structure.md    # Folder layout and content organization guide
 │   ├── examples.md             # Example waypoint.yaml files for common scenarios
-│   └── customization.md        # Technical guide for customizing dashboard.html
+│   └── customization.md        # Technical guide for customizing waypoint.html
 └── ROADMAP.md                  # Redirect — see GitHub Issues and Releases
 ```
 

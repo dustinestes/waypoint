@@ -33,14 +33,14 @@ git clone https://github.com/dustinestes/waypoint.git
 cd waypoint
 ```
 
-The dashboard (`dashboard.html`) opens directly in any modern browser. The YAML schema is documented in `waypoint.yaml` and the README.
+waypoint (`waypoint.html`) opens directly in any modern browser. The YAML schema is documented in `waypoint.yaml` and the README.
 
 ---
 
 ## Code & Style Guidelines
 
 - **YAML** — keep the schema human-readable and flat where possible. Avoid nesting beyond three levels.
-- **HTML/CSS/JS** — vanilla only for the dashboard; no build dependencies.
+- **HTML/CSS/JS** — vanilla only for waypoint; no build dependencies.
 - **Comments** — write comments for anything non-obvious. This project is used by learners, so clarity matters.
 - **Naming** — use `snake_case` for YAML keys and file names. Match existing conventions in the repo.
 

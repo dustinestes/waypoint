@@ -42,7 +42,7 @@ subjects:
       - id: foundations            # Unique slug within this subject
         title: "Foundations"
         description: "Core concepts and architecture"
-        order: 1                   # Controls display order in the dashboard
+        order: 1                   # Controls display order in waypoint
         estimated_time: "8 hours"  # (optional)
 
         # ---------------------------------------------------------------------
@@ -54,7 +54,7 @@ subjects:
 
           - id: what-is-kubernetes       # Unique slug within this milestone
             title: "What is Kubernetes?"
-            order: 1                     # Controls display order in the dashboard
+            order: 1                     # Controls display order in waypoint
             difficulty: beginner         # (optional) beginner | intermediate | advanced
             type: reading                # (optional) reading | video | lab | quiz | mixed
             estimated_time: "1 hour"     # (optional)

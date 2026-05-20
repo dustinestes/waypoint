@@ -1,37 +1,37 @@
 <br><br>
 <img align="right" src="../branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="waypoint">
-<h1>Dashboard Guide</h1>
+<h1>waypoint Guide</h1>
 <br clear="both">
 
-A reference for all dashboard features — loading files, tracking progress, editing statuses, managing session state, and customizing themes.
+A reference for all waypoint features — loading files, tracking progress, editing statuses, managing session state, and customizing themes.
 
 <br>
 
-## Opening the Dashboard
+## Opening waypoint
 
-Open `dashboard.html` directly in any modern browser. No server or build step is required. An internet connection is currently needed to load fonts, icons, and the YAML parser from CDN.
+Open `waypoint.html` directly in any modern browser. No server or build step is required. An internet connection is currently needed to load fonts, icons, and the YAML parser from CDN.
 
 ### Loading a YAML file
 
-There are three ways to load your learning file into the dashboard:
+There are three ways to load your learning file into waypoint:
 
 | Method | When to use |
 |--------|-------------|
-| **Auto-load** | When `dashboard.html` and your YAML file are in the same directory and served via a local server or GitHub Pages |
+| **Auto-load** | When `waypoint.html` and your YAML file are in the same directory and served via a local server or GitHub Pages |
 | **File picker** | Click **Load YAML** in the navbar to browse for any YAML file |
 | **Drag and drop** | Drag any YAML file directly onto the drop zone on the upload screen |
 
 ### File naming
 
-The file picker and drag-and-drop methods accept **any filename** — `kubernetes.yaml`, `aws-prep.yaml`, `my-learning.yaml`, or anything else. The dashboard reads whatever you give it and preserves the original filename when you save.
+The file picker and drag-and-drop methods accept **any filename** — `kubernetes.yaml`, `aws-prep.yaml`, `my-learning.yaml`, or anything else. waypoint reads whatever you give it and preserves the original filename when you save.
 
 Auto-load is currently hardcoded to look for `waypoint.yaml` in the same directory. If you serve a differently-named file via GitHub Pages or a local server, it won't auto-load — use the file picker or drag-and-drop instead.
 
-> **Planned:** a config block in `dashboard.html` will allow the auto-load filename to be customized. See [GitHub issue #5](https://github.com/dustinestes/waypoint/issues/5).
+> **Planned:** a config block in `waypoint.html` will allow the auto-load filename to be customized. See [GitHub issue #5](https://github.com/dustinestes/waypoint/issues/5).
 
 ---
 
-## Dashboard Layout
+## waypoint Layout
 
 ### Navbar
 
@@ -46,7 +46,7 @@ The navbar runs across the top of the page and contains all primary controls:
 
 ### Summary Bar
 
-Displayed at the top of the dashboard. Shows aggregate counts across all subjects:
+Displayed at the top of waypoint. Shows aggregate counts across all subjects:
 
 | Stat | Color accent | Notes |
 |------|-------------|-------|
@@ -114,7 +114,7 @@ Clicking anywhere outside an open dropdown closes it without making a change. On
 - Setting status to `complete` auto-fills both `started_date` (if not already set) and `completed_date` with today's date
 - Resetting to `not_started` clears both dates
 
-After a status change the dashboard re-renders, but any subjects and milestones you had expanded remain open.
+After a status change waypoint re-renders, but any subjects and milestones you had expanded remain open.
 
 ---
 
@@ -141,18 +141,18 @@ Regardless of browser, after a successful save:
 - The Download button returns to its gray state
 - The localStorage cache is cleared
 
-The saved file is fully valid YAML and can be committed to git, re-loaded into the dashboard, or opened in any text editor.
+The saved file is fully valid YAML and can be committed to git, re-loaded into waypoint, or opened in any text editor.
 
 ---
 
 ## Session Persistence
 
-The dashboard writes your current state to `localStorage` on every status change. If you close the tab, refresh, or navigate away before saving, your changes survive.
+waypoint writes your current state to `localStorage` on every status change. If you close the tab, refresh, or navigate away before saving, your changes survive.
 
-On the next load (once a file is available), the dashboard shows a **Restore session** banner with the date and time of the last auto-save. Two options:
+On the next load (once a file is available), waypoint shows a **Restore session** banner with the date and time of the last auto-save. Two options:
 
 - **Restore session** — dismisses the banner and keeps the cached state loaded. Your unsaved changes remain active.
-- **Discard** — clears the cache, hides the dashboard entirely, and returns to the upload screen. All unsaved changes are lost.
+- **Discard** — clears the cache, hides waypoint entirely, and returns to the upload screen. All unsaved changes are lost.
 
 The cache is cleared automatically after any successful save or download.
 
