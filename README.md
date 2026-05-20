@@ -154,7 +154,7 @@ subjects:
 Open `dashboard.html` in your browser to see a visual summary of your roadmap — progress by subject and milestone, module status at a glance, and direct links to your notes and materials. No build step, no server required.
 
 <div align="center">
-  <img src=".waypoint/docs/screenshots/dashboard-overview.png" alt="Dashboard overview" width="80%">
+  <img src=".waypoint/docs/screenshots/dashboard-overview.png" alt="Dashboard overview" width="60%">
   <p><em>Dashboard view — subjects, milestones, and module status at a glance</em></p>
 </div>
 
