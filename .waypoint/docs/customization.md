@@ -1,11 +1,11 @@
 <br><br>
 <img align="right" src="../branding/icons/waypoint_standalonemark_lightbg.png" height="44" alt="waypoint">
-<h1>Customizing the Dashboard</h1>
+<h1>Customizing waypoint</h1>
 <br clear="both">
 
-A technical guide to modifying `dashboard.html` — color palette, typography, layout, navbar, themes, and status badges — for teams or individuals who want to adapt the dashboard to their own visual style.
+A technical guide to modifying `waypoint.html` — color palette, typography, layout, navbar, themes, and status badges — for teams or individuals who want to adapt waypoint to their own visual style.
 
-All customization is done by editing `dashboard.html` directly in a text editor. There is no build step — save the file and reload in the browser to see changes.
+All customization is done by editing `waypoint.html` directly in a text editor. There is no build step — save the file and reload in the browser to see changes.
 
 <br>
 
@@ -35,7 +35,7 @@ Do not add your organization name, tagline, logo, or any other content to the fo
 
 ## Color Palette
 
-All colors are defined as CSS custom properties inside the `:root` block near the top of the `<style>` section (around line 15). These variables are referenced throughout the dashboard — updating a value here propagates everywhere it is used.
+All colors are defined as CSS custom properties inside the `:root` block near the top of the `<style>` section (around line 15). These variables are referenced throughout waypoint — updating a value here propagates everywhere it is used.
 
 ```css
 :root {

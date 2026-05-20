@@ -20,7 +20,7 @@ What actually happened.
 
 ## Environment
 - OS:
-- Browser (if dashboard-related):
+- Browser (if interface-related):
 - waypoint version / commit:
 
 ## Additional Context

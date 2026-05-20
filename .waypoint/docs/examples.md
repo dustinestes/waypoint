@@ -29,7 +29,7 @@ waypoint/
 │       └── pods/
 │           └── README.md
 ├── waypoint.yaml
-└── dashboard.html
+└── waypoint.html
 ```
 
 ### waypoint.yaml
@@ -157,7 +157,7 @@ waypoint/
 │       └── first-container/
 │           └── README.md
 ├── waypoint.yaml
-└── dashboard.html
+└── waypoint.html
 ```
 
 ### waypoint.yaml
@@ -263,14 +263,14 @@ subjects:
 
 ## Minimalist — Just Enough to Track
 
-**Scenario:** A learner who wants progress tracking without the overhead of local files or detailed metadata. No content folders are needed at all — the repo is just the YAML and the dashboard. External links can still be added to modules, but nothing needs to live locally. The dashboard still renders progress bars, status badges, and the in-progress strip with only the required fields filled in.
+**Scenario:** A learner who wants progress tracking without the overhead of local files or detailed metadata. No content folders are needed at all — the repo is just the YAML and waypoint. External links can still be added to modules, but nothing needs to live locally. waypoint still renders progress bars, status badges, and the in-progress strip with only the required fields filled in.
 
 ### Folder Structure
 
 ```
 waypoint/
 ├── waypoint.yaml
-└── dashboard.html
+└── waypoint.html
 ```
 
 ### waypoint.yaml
@@ -329,7 +329,7 @@ waypoint/
 │       └── core-services/
 │           └── s3-deep-dive.md
 ├── waypoint.yaml
-└── dashboard.html
+└── waypoint.html
 ```
 
 ### waypoint.yaml
@@ -453,7 +453,7 @@ waypoint/
 │       ├── aws-saa-certificate.pdf
 │       └── azure-az900-certificate.pdf
 ├── waypoint.yaml
-└── dashboard.html
+└── waypoint.html
 ```
 
 ### waypoint.yaml

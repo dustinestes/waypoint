@@ -25,7 +25,7 @@
 
 ---
 
-waypoint is a lightweight, file-based framework for structuring and tracking self-directed learning. waypoint gives you a single place to define and centralize what you're learning, organize your materials, track where you are, and navigate what's next — all from a single YAML file and a local dashboard that runs in any browser.
+waypoint is a lightweight, file-based framework for structuring and tracking self-directed learning. waypoint gives you a single place to define and centralize what you're learning, organize your materials, track where you are, and navigate what's next — all from a single YAML file and a local application that runs in any browser.
 
 ---
 
@@ -35,8 +35,8 @@ waypoint is a lightweight, file-based framework for structuring and tracking sel
 
 - **Scaffold** a consistent folder structure for notes, docs, labs, and scripts
 - **Define** your learning roadmap in a single YAML file — subjects, milestones, and modules
-- **Track** progress by updating module statuses directly in the dashboard or the YAML file
-- **Visualize** everything through a local dashboard with direct links to your materials
+- **Track** progress by updating module statuses directly in waypoint or the YAML file
+- **Visualize** everything through waypoint with direct links to your materials
 
 ---
 
@@ -68,7 +68,7 @@ waypoint is for anyone learning outside of a single structured platform — pull
 1. **Define your roadmap** — write a `waypoint.yaml` that outlines your subjects, milestones, and individual learning modules
 2. **Gather your materials** — collect links, write notes, set up labs, and save reference docs in the structured folder layout
 3. **Connect everything** — reference your local files and external links directly in your YAML so nothing gets lost
-4. **Track daily** — open the dashboard, update module statuses as you learn, and download your updated YAML to save changes
+4. **Track daily** — open waypoint, update module statuses as you learn, and download your updated YAML to save changes
 
 ---
 
@@ -85,7 +85,7 @@ waypoint is for anyone learning outside of a single structured platform — pull
 
 No install, no build step, no package manager, no server.
 
-> Bundling all dependencies directly into `dashboard.html` to remove the internet requirement is planned. See [issue #17](https://github.com/dustinestes/waypoint/issues/17).
+> Bundling all dependencies directly into `waypoint.html` to remove the internet requirement is planned. See [issue #17](https://github.com/dustinestes/waypoint/issues/17).
 
 ---
 
@@ -103,7 +103,7 @@ waypoint/
 ├── notes/              # Personal notes organized by subject and module
 ├── scripts/            # Automation scripts, setup helpers, tooling
 ├── waypoint.yaml       # Your learning roadmap and progress tracker
-└── dashboard.html      # Local progress dashboard — opens in any browser
+└── waypoint.html       # waypoint — opens in any browser
 ```
 
 > Full structure guide → [`.waypoint/docs/project-structure.md`](.waypoint/docs/project-structure.md)
@@ -149,16 +149,16 @@ subjects:
 
 <br/>
 
-### Dashboard
+### waypoint Interface
 
-Open `dashboard.html` in your browser to see a visual summary of your roadmap — progress by subject and milestone, module status at a glance, and direct links to your notes and materials. No build step, no server required.
+Open `waypoint.html` in your browser to see a visual summary of your roadmap — progress by subject and milestone, module status at a glance, and direct links to your notes and materials. No build step, no server required.
 
 <div align="center">
-  <img src=".waypoint/docs/screenshots/dashboard-overview.png" alt="Dashboard overview" width="60%">
-  <p><em>Dashboard view — subjects, milestones, and module status at a glance</em></p>
+  <img src=".waypoint/docs/screenshots/waypoint_main.png" alt="waypoint" width="60%">
+  <p><em>Waypoint — subjects, milestones, and module status at a glance</em></p>
 </div>
 
-> Full dashboard guide → [`.waypoint/docs/dashboard.md`](.waypoint/docs/dashboard.md)
+> Full guide → [`.waypoint/docs/waypoint.md`](.waypoint/docs/waypoint.md)
 
 ---
 
@@ -174,7 +174,7 @@ Open `dashboard.html` in your browser to see a visual summary of your roadmap �
    cd my-learning
    ```
 2. **Edit `waypoint.yaml`** to define your subjects, milestones, and modules
-3. **Open `dashboard.html`** in your browser to start tracking
+3. **Open `waypoint.html`** in your browser to start tracking
 
 > Full walkthrough → [`.waypoint/docs/getting-started.md`](.waypoint/docs/getting-started.md)
 

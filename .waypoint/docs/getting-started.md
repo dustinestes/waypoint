@@ -62,7 +62,7 @@ subjects:
 ```
 
 - `id` — a unique slug, lowercase with hyphens. **Never change it once set** — it's used as a stable identifier.
-- `title` — display name shown in the dashboard
+- `title` — display name shown in waypoint
 - `description` — optional, shown on the subject card
 - `estimated_time` — free text, shown alongside the subject
 
@@ -83,7 +83,7 @@ Milestones are logical phases or chapters within a subject. Add them under `mile
         modules:
 ```
 
-- `order` — controls display order in the dashboard (ascending)
+- `order` — controls display order in waypoint (ascending)
 
 ---
 
@@ -155,17 +155,17 @@ Resource types: `external` · `notes` · `lab` · `script`
 
 ---
 
-## 8. Open the Dashboard
+## 8. Open waypoint
 
-Open `dashboard.html` directly in your browser. If your `waypoint.yaml` is in the same directory (e.g., serving via GitHub Pages or a local server), it loads automatically. Otherwise, use the file picker or drag-and-drop your YAML file onto the page.
+Open `waypoint.html` directly in your browser. If your YAML file is in the same directory (e.g., serving via GitHub Pages or a local server), it loads automatically. Otherwise, use the file picker or drag-and-drop your YAML file onto the page.
 
-> See the full dashboard guide → [`dashboard.md`](dashboard.md)
+> See the full guide → [`waypoint.md`](waypoint.md)
 
 ---
 
 ## 9. Update Your Progress
 
-As you complete modules, click the status badge in the dashboard to cycle through statuses:
+As you complete modules, click the status badge in waypoint to cycle through statuses:
 
 `not_started` → `in_progress` → `complete` → `skipped`
 

@@ -3,7 +3,7 @@
 <h1>YAML Schema Reference</h1>
 <br clear="both">
 
-Complete field-by-field reference for `waypoint.yaml`. All fields listed as optional can be omitted or left blank — the dashboard handles missing values gracefully.
+Complete field-by-field reference for `waypoint.yaml`. All fields listed as optional can be omitted or left blank — waypoint handles missing values gracefully.
 
 <br>
 
@@ -40,7 +40,7 @@ subjects:
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
 | `id` | Yes | string | Unique slug — lowercase, hyphens only. **Never change once set.** |
-| `title` | Yes | string | Display name shown in the dashboard |
+| `title` | Yes | string | Display name shown in waypoint |
 | `description` | No | string | Short description shown on the subject card |
 | `icon` | No | string | Relative path to an icon image (e.g. `assets/k8s.png`) |
 | `estimated_time` | No | string | Free text — `"40 hours"`, `"6 weeks"`, `"3 days"` |
@@ -66,9 +66,9 @@ A logical phase or chapter within a subject. Milestones group related modules.
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
 | `id` | Yes | string | Unique slug within this subject — lowercase, hyphens only |
-| `title` | Yes | string | Display name shown in the dashboard |
+| `title` | Yes | string | Display name shown in waypoint |
 | `description` | No | string | Short description shown on the milestone row |
-| `order` | No | integer | Controls display order in the dashboard (ascending). Defaults to YAML order if omitted. |
+| `order` | No | integer | Controls display order in waypoint (ascending). Defaults to YAML order if omitted. |
 | `estimated_time` | No | string | Free text — same format as subject |
 | `modules` | Yes | array | List of module objects (see below) |
 
@@ -96,14 +96,14 @@ An individual learning unit — a resource to consume, a lab to complete, or a c
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
 | `id` | Yes | string | Unique slug within this milestone — lowercase, hyphens only |
-| `title` | Yes | string | Display name shown in the dashboard |
+| `title` | Yes | string | Display name shown in waypoint |
 | `order` | No | integer | Controls display order within the milestone |
 | `type` | No | enum | `reading` · `video` · `lab` · `quiz` · `mixed` |
 | `difficulty` | No | enum | `beginner` · `intermediate` · `advanced` |
 | `estimated_time` | No | string | Free text |
 | `status` | Yes | enum | See [Statuses](#statuses) below |
-| `started_date` | No | string | ISO 8601 date — `"2025-03-10"`. Auto-filled by dashboard when status is set to `in_progress`. |
-| `completed_date` | No | string | ISO 8601 date — `"2025-03-12"`. Auto-filled by dashboard when status is set to `complete`. |
+| `started_date` | No | string | ISO 8601 date — `"2025-03-10"`. Auto-filled by waypoint when status is set to `in_progress`. |
+| `completed_date` | No | string | ISO 8601 date — `"2025-03-12"`. Auto-filled by waypoint when status is set to `complete`. |
 | `resources` | No | array | List of resource objects (see below) |
 
 ---
@@ -117,7 +117,7 @@ An individual learning unit — a resource to consume, a lab to complete, or a c
 | `complete` | Finished |
 | `skipped` | Intentionally skipped (excluded from progress calculation) |
 
-The dashboard auto-fills `started_date` when a module moves to `in_progress`, and `completed_date` when it moves to `complete`. Both dates are cleared if status is reset to `not_started`.
+waypoint auto-fills `started_date` when a module moves to `in_progress`, and `completed_date` when it moves to `complete`. Both dates are cleared if status is reset to `not_started`.
 
 ---
 
@@ -147,7 +147,7 @@ Each module can have zero or more resources — links to external content or loc
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
 | `type` | Yes | enum | `external` · `notes` · `lab` · `script` |
-| `label` | Yes | string | Display text for the link in the dashboard |
+| `label` | Yes | string | Display text for the link in waypoint |
 | `url` | Conditional | string | Required when `type: external` |
 | `path` | Conditional | string | Required for all other types — relative path from repo root |
 
