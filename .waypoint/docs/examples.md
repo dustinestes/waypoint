@@ -440,7 +440,7 @@ Each completed course links to both the learner's profile on the originating pla
 
 The folder structure is intentionally minimal. Almost everything is external. The only local content is a `certifications/` folder holding completion certificates as they are earned.
 
-> **Note:** Certificate files are linked using `type: notes` as a practical workaround — a dedicated `docs` resource type is planned for a future release. See [GitHub issue #6](https://github.com/dustinestes/waypoint/issues/6).
+> **Note:** Certificate files are linked using `type: notes` as a practical workaround — a dedicated `docs` resource type is planned for a future release. See [GitHub issue #22](https://github.com/dustinestes/waypoint/issues/22).
 
 ### Folder Structure
 
