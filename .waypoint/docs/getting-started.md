@@ -173,7 +173,19 @@ Dates are filled in automatically when you change status. Use the **Download** b
 
 ---
 
-## 10. Keep It in Git
+## 10. Publish Your Waypoint (Optional)
+
+If you want to share your learning path publicly, you can deploy `waypoint.html` and `waypoint.yaml` to any static host. The included GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) publishes to GitHub Pages automatically on every push to `main`.
+
+Before enabling public deployment, ensure your `waypoint.yaml` is committed — the page auto-loads it by filename and visitors will see a blank upload screen if it's missing.
+
+**View-only mode** is activated automatically by the deploy workflow so visitors can see your progress but cannot modify it. No manual changes to `waypoint.html` are needed — the workflow flips the flag at deploy time.
+
+> For non-GitHub Pages hosts, see the view-only deployment instructions → [`waypoint.md`](waypoint.md#view-only-mode)
+
+---
+
+## 11. Keep It in Git
 
 Commit your `waypoint.yaml` regularly so your progress is version-controlled:
 

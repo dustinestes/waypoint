@@ -211,6 +211,15 @@
     .btn-download.has-changes:hover { background: var(--wp-deep); }
     #file-input { display: none; }
 
+    /* ── View-only mode ── */
+    body.view-only #file-status,
+    body.view-only #unsaved-pill,
+    body.view-only #btn-download,
+    body.view-only .theme-picker-wrap,
+    body.view-only #btn-load,
+    body.view-only #toast-undo { display: none !important; }
+    body.view-only .badge { cursor: default; }
+
     /* ── Upload screen ── */
     #upload-screen {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -631,6 +640,7 @@
 </footer>
 
 <script>
+  const VIEW_ONLY  = false;
   const CACHE_KEY  = 'waypoint_session';
   const THEME_KEY  = 'waypoint_theme';
   const THEMES     = ['default', 'minimal', 'warm'];
@@ -654,7 +664,8 @@
   function setTheme(name) {
     if (!THEMES.includes(name)) name = 'default';
     currentTheme = name;
-    document.body.className = 'theme-' + name;
+    THEMES.forEach(t => document.body.classList.remove('theme-' + t));
+    document.body.classList.add('theme-' + name);
     localStorage.setItem(THEME_KEY, name);
     THEMES.forEach(t => {
       document.getElementById('topt-' + t).classList.toggle('active', t === name);
@@ -676,6 +687,7 @@
 
   // Init theme from localStorage
   setTheme(localStorage.getItem(THEME_KEY) || 'default');
+  if (VIEW_ONLY) document.body.classList.add('view-only');
 
   /* ── File loading ── */
 
@@ -717,7 +729,7 @@
   ['dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.remove('dragover'); }));
   dropZone.addEventListener('drop', e => {
     const file = e.dataTransfer.files[0];
-    if (!file) return;
+    if (!file || VIEW_ONLY) return;
     fileHandle = null;
     const reader = new FileReader();
     reader.onload = ev => loadYaml(ev.target.result, file.name);
@@ -911,6 +923,7 @@
   /* ── Dropdown ── */
   function toggleDropdown(id, event) {
     event.stopPropagation();
+    if (VIEW_ONLY) return;
     if (openDropdownId && openDropdownId !== id) {
       const prev = document.getElementById(openDropdownId);
       if (prev) prev.classList.remove('open');
@@ -923,6 +936,7 @@
 
   function selectStatus(si, mi, modi, newStatus, dropdownId, event) {
     event.stopPropagation();
+    if (VIEW_ONLY) return;
     const el = document.getElementById(dropdownId);
     if (el) el.classList.remove('open');
     openDropdownId = null;

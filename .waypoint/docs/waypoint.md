@@ -158,6 +158,58 @@ The cache is cleared automatically after any successful save or download.
 
 ---
 
+## View-Only Mode
+
+waypoint includes a view-only mode intended for public deployments where visitors should be able to see progress but not make changes.
+
+When view-only mode is active:
+- The **Load YAML**, **Download**, and **Theme** controls are hidden from the navbar
+- The **file status** and **unsaved changes** indicators are hidden
+- Status badge clicks are disabled — the dropdown never opens
+- Drag-and-drop file loading is blocked
+- The **Undo** button is hidden from the toast notification
+
+The dashboard, progress bars, module details, and resource links all remain fully visible.
+
+### Enabling View-Only Mode
+
+View-only mode is controlled by a single constant near the top of the `<script>` block in `waypoint.html`:
+
+```js
+const VIEW_ONLY = false;
+```
+
+Set it to `true` to activate view-only mode:
+
+```js
+const VIEW_ONLY = true;
+```
+
+### GitHub Pages / GitHub Actions
+
+The included workflow at `.github/workflows/deploy-pages.yml` handles this automatically. A `sed` step flips the flag to `true` at deploy time so your local copy remains fully editable while the published site is read-only:
+
+```yaml
+- name: Enable view-only mode
+  run: sed -i 's/const VIEW_ONLY  = false;/const VIEW_ONLY  = true;/' waypoint.html
+```
+
+No manual edits to `waypoint.html` are required — commit your file with `VIEW_ONLY = false` and the workflow handles the rest on every push to `main`.
+
+### Other Deployment Methods
+
+For any other static host (Netlify, Vercel, Cloudflare Pages, S3, a self-hosted server), apply the same `sed` substitution as a pre-deploy build step:
+
+```bash
+sed -i 's/const VIEW_ONLY  = false;/const VIEW_ONLY  = true;/' waypoint.html
+```
+
+Run this command after checkout but before uploading files. Most CI platforms support a `run:` or `script:` step where this fits naturally.
+
+Alternatively, set `VIEW_ONLY = true` directly in `waypoint.html` and maintain a separate branch or copy for local editing.
+
+---
+
 ## Themes
 
 Three built-in themes are available via the palette icon in the navbar. Each theme changes the color treatment of subject headers, milestone rows, and module rows independently.
